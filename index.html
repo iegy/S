@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سليم للفحم النباتي | Selim Exports - Premium Charcoal</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fdfbf7',
+                            100: '#fbf7ed',
+                            500: '#C5A059',
+                            600: '#b48e47',
+                            700: '#957134',
+                        },
+                        charcoal: {
+                            950: '#0c0c0e',
+                            900: '#121215',
+                            800: '#1a1a20',
+                            700: '#24242b',
+                            600: '#2f2f38',
+                        },
+                        leaf: {
+                            500: '#45773B',
+                            600: '#38632e',
+                            750: '#24421d'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .glassmorphism {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .channel-card {
+            transition: all 0.25s ease;
+        }
+        .channel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        @keyframes spin-slow {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900 dark:bg-charcoal-950 dark:text-stone-100 min-h-screen">
+
+    <!-- نظام التنبيهات -->
+    <div id="toast-container" class="fixed bottom-5 left-5 z-50 flex flex-col gap-2 max-w-sm w-full"></div>
+
+    <!-- مودال التأكيد -->
+    <div id="confirm-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-4">
+            <h4 class="text-lg font-black text-charcoal-900 dark:text-white" id="confirm-title">تأكيد الإجراء</h4>
+            <p class="text-sm text-stone-500 dark:text-stone-400" id="confirm-message">هل أنت متأكد من رغبتك في تنفيذ هذا الإجراء؟</p>
+            <div class="flex justify-end gap-3 pt-2">
+                <button id="confirm-cancel-btn" class="px-4 py-2 rounded-xl bg-stone-100 dark:bg-charcoal-800 text-stone-600 dark:text-stone-300 text-xs font-bold hover:bg-stone-200 dark:hover:bg-charcoal-700 transition-all">إلغاء</button>
+                <button id="confirm-ok-btn" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all">تأكيد الإجراء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-charcoal-900/95 border-b border-stone-200 dark:border-stone-900 shadow-sm glassmorphism transition-all">
+        <div class="container mx-auto px-4 py-3.5 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer select-none" ondblclick="openAdminLoginModal()" title="انقر نقراً مزدوجاً لفتح بوابة الإدارة">
+                <div class="w-12 h-12 rounded-full border-2 border-gold-500 flex items-center justify-center bg-black shadow-inner">
+                    <span class="text-gold-500 font-black text-lg tracking-tighter">SE</span>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-black tracking-wider text-charcoal-900 dark:text-white">
+                        SELIM <span class="text-gold-500">EXPORTS</span>
+                    </h1>
+                    <p class="text-[9px] text-leaf-500 dark:text-gold-500/80 uppercase tracking-widest font-extrabold">Premium Natural Charcoal</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <nav class="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider">
+                    <a href="#home" class="hover:text-gold-500 transition-colors">الرئيسية</a>
+                    <a href="#about" class="hover:text-gold-500 transition-colors">من نحن</a>
+                    <a href="#features" class="hover:text-gold-500 transition-colors">المواصفات</a>
+                    <a href="#products" class="hover:text-gold-500 transition-colors">المنتجات</a>
+                    <a href="#offers" class="hover:text-gold-500 transition-colors">العروض الخاصة</a>
+                    <a href="#contact" class="hover:text-gold-500 transition-colors">اتصل بنا</a>
+                </nav>
+                <div class="flex items-center gap-2 border-r dark:border-stone-800 pr-4">
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-charcoal-800 text-stone-700 dark:text-gold-500 flex items-center justify-center hover:scale-105 transition-all shadow-sm" title="تبديل المظهر">
+                        <i id="theme-icon" class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center px-4 overflow-hidden" style="background-image: linear-gradient(rgba(255,255,255,0.85), rgba(245,245,240,0.95)), url('https://images.unsplash.com/photo-1608686217573-616a64e5b141?q=80&w=1600&auto=format&fit=crop');">
+        <script>
+            if (localStorage.getItem('theme') === 'dark') {
+                document.getElementById('home').style.backgroundImage =
+                    "linear-gradient(rgba(12,12,14,0.85), rgba(12,12,14,0.98)), url('https://images.unsplash.com/photo-1608686217573-616a64e5b141?q=80&w=1600&auto=format&fit=crop')";
+            }
+        </script>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-gold-500/10 rounded-full blur-[120px]"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-leaf-500/10 rounded-full blur-[120px]"></div>
+        <div class="text-center max-w-4xl space-y-6 relative z-10">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 text-[10px] md:text-xs font-extrabold bg-stone-900 text-gold-500 border border-gold-500/30 rounded-full shadow-md">
+                <i class="fa-solid fa-globe text-emerald-400 animate-spin-slow"></i> للتوريد المحلي الفاخر والتصدير لجميع الموانئ العالمية
+            </span>
+            <h2 class="text-4xl md:text-7xl font-black text-stone-900 dark:text-white leading-tight">
+                سليم للفحم النباتي الطبيعي <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-600 via-amber-500 to-gold-700 dark:from-gold-500 dark:to-gold-600">SELIM EXPORTS</span>
+            </h2>
+            <p class="text-stone-600 dark:text-stone-300 text-sm md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
+                إنتاج وتجهيز فحم الفواكه النقي وفحم الموالح والجزورين بأحدث الأساليب الصديقة للبيئة، لتقديم منتج تجاري ممتاز يطابق المواصفات العالمية.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 pt-4">
+                <a href="#products" class="bg-stone-900 text-white dark:bg-gold-500 dark:text-black px-8 py-3.5 rounded-xl font-extrabold shadow-lg hover:scale-105 transition-all">
+                    <i class="fa-solid fa-box-open ml-2"></i> استعراض منتجاتنا
+                </a>
+                <a href="#contact" class="border border-stone-300 dark:border-stone-700 bg-white/50 dark:bg-stone-900/40 text-stone-900 dark:text-white px-8 py-3.5 rounded-xl font-bold hover:bg-stone-100 dark:hover:bg-stone-800 transition-all">
+                    <i class="fa-solid fa-file-invoice-dollar ml-2"></i> طلب كوت تسعير وعينات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mx-auto px-4 py-20 border-b border-stone-200 dark:border-stone-900">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="space-y-2">
+                    <span class="text-gold-600 dark:text-gold-500 text-xs font-black uppercase tracking-widest block"><i class="fa-solid fa-building-flag ml-1"></i> ريادتنا في السوق</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-stone-900 dark:text-white">شركة سليم للفحم النباتي والتبادل التجاري</h2>
+                    <div class="w-20 h-1 bg-gold-500 rounded-full"></div>
+                </div>
+                <p id="dyn-about-text" class="text-stone-600 dark:text-stone-300 text-sm md:text-base leading-relaxed text-justify">
+                    جاري تحميل بيانات الشركة من السحابة الآمنة...
+                </p>
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="p-4 bg-white dark:bg-charcoal-900 rounded-2xl border border-stone-200/60 dark:border-stone-800 shadow-sm">
+                        <h4 class="font-black text-gold-600 dark:text-gold-500 text-xl font-sans">0%</h4>
+                        <p class="text-stone-500 dark:text-stone-400 text-xs font-bold">أدخنة أو روائح كيميائية وضارة</p>
+                    </div>
+                    <div class="p-4 bg-white dark:bg-charcoal-900 rounded-2xl border border-stone-200/60 dark:border-stone-800 shadow-sm">
+                        <h4 class="font-black text-emerald-600 text-xl font-sans">+4h</h4>
+                        <p class="text-stone-500 dark:text-stone-400 text-xs font-bold">متوسط ساعات احتراق مستمرة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-tr from-gold-500/20 to-transparent rounded-3xl -rotate-3 transform"></div>
+                <img src="https://images.unsplash.com/photo-1542332213-9b5a5a3fda35?q=80&w=800&auto=format&fit=crop" class="rounded-3xl shadow-md border border-stone-200 dark:border-stone-800 relative z-10 object-cover w-full h-80 lg:h-96" alt="فحم نباتي">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="container mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white dark:bg-charcoal-900 p-6 md:p-8 rounded-2xl border border-stone-200 dark:border-stone-900 shadow-sm text-center space-y-3 hover:border-gold-500/40 transition-all duration-300">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-500/10 flex items-center justify-center text-2xl text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-leaf"></i></div>
+                <h3 class="font-extrabold text-base dark:text-white">100% Natural</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-xs">منتج طبيعي نقي وخالٍ تماماً من المضافات الكيميائية أو الأخشاب الملوثة.</p>
+            </div>
+            <div class="bg-white dark:bg-charcoal-900 p-6 md:p-8 rounded-2xl border border-stone-200 dark:border-stone-900 shadow-sm text-center space-y-3 hover:border-gold-500/40 transition-all duration-300">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-gold-500/10 flex items-center justify-center text-2xl text-gold-600 dark:text-gold-500"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                <h3 class="font-extrabold text-base dark:text-white">High Quality</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-xs">نسبة كربون عالية ورماد ثلجي أبيض ناعم مع صلابة تمنع التكسر أثناء النقل.</p>
+            </div>
+            <div class="bg-white dark:bg-charcoal-900 p-6 md:p-8 rounded-2xl border border-stone-200 dark:border-stone-900 shadow-sm text-center space-y-3 hover:border-gold-500/40 transition-all duration-300">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-blue-500/10 flex items-center justify-center text-2xl text-blue-600 dark:text-blue-400"><i class="fa-solid fa-ship"></i></div>
+                <h3 class="font-extrabold text-base dark:text-white">Global Export</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-xs">جاهزية تامة لشحن الحاويات بكافة وثائق الفحص والشهادات البيئية المعتمدة.</p>
+            </div>
+            <div class="bg-white dark:bg-charcoal-900 p-6 md:p-8 rounded-2xl border border-stone-200 dark:border-stone-900 shadow-sm text-center space-y-3 hover:border-gold-500/40 transition-all duration-300">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-stone-500/10 flex items-center justify-center text-2xl text-stone-700 dark:text-stone-300"><i class="fa-solid fa-handshake"></i></div>
+                <h3 class="font-extrabold text-base dark:text-white">Reliable Supply</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-xs">طاقة إنتاجية ضخمة تلبي طلبيات المصانع الكبرى والشركات طوال العام ودون انقطاع.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Catalog -->
+    <section id="products" class="container mx-auto px-4 py-12">
+        <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
+            <h2 class="text-3xl font-black text-stone-900 dark:text-white">كتالوج منتجاتنا الفاخرة</h2>
+            <div class="w-16 h-1 bg-gold-500 mx-auto rounded-full"></div>
+        </div>
+        <div class="flex justify-center gap-3 mb-10 overflow-x-auto pb-3 scrollbar-none">
+            <button onclick="filterCatalog('all')" id="filter-btn-all" class="filter-btn px-6 py-2 rounded-xl bg-stone-900 text-white dark:bg-gold-500 dark:text-black font-extrabold text-xs whitespace-nowrap shadow-md">كل الأصناف</button>
+            <button onclick="filterCatalog('تصدير')" id="filter-btn-تصدير" class="filter-btn px-6 py-2 rounded-xl bg-white dark:bg-charcoal-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-800 font-bold text-xs whitespace-nowrap shadow-sm">درجة أولى تصدير</button>
+            <button onclick="filterCatalog('محلي')" id="filter-btn-محلي" class="filter-btn px-6 py-2 rounded-xl bg-white dark:bg-charcoal-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-800 font-bold text-xs whitespace-nowrap shadow-sm">سوق محلي ومشاوي</button>
+        </div>
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section id="offers" class="bg-stone-100 dark:bg-charcoal-900 border-t border-b border-stone-200 dark:border-stone-900 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-xl mx-auto mb-12 space-y-2">
+                <span class="text-red-500 font-black tracking-widest text-xs uppercase block animate-pulse">
+                    <i class="fa-solid fa-tags ml-1"></i> خصومات استثنائية على شحن الحاويات والكميات الكبرى
+                </span>
+                <h2 class="text-3xl font-black text-stone-900 dark:text-white">أحدث عروض التوريد الحالية</h2>
+                <div class="w-16 h-1 bg-red-500 mx-auto rounded-full"></div>
+            </div>
+            <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Dynamic Channels) -->
+    <section id="contact" class="container mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            <div class="bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-lg space-y-6">
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-black text-stone-900 dark:text-white">قنوات التعاقد الرسمي</h2>
+                    <p class="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">
+                        يسعدنا استقبال استفساراتكم التجارية وطلبات فحص الحاويات على مدار الساعة عبر قنوات مبيعاتنا الرسمية.
+                    </p>
+                    <div id="dyn-contact-channels" class="space-y-4 pt-2">
+                        <!-- تُعبأ برمجياً -->
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-stone-100 dark:border-stone-800 space-y-2">
+                    <p class="text-[11px] font-black text-stone-400 uppercase tracking-widest">منصاتنا الرقمية</p>
+                    <div id="dyn-social-links" class="flex gap-2 flex-wrap">
+                        <!-- تُعبأ برمجياً -->
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 md:p-8 shadow-lg flex flex-col justify-center">
+                <h3 class="text-md font-bold text-stone-800 dark:text-white mb-4"><i class="fa-solid fa-paper-plane text-gold-500 ml-1.5"></i> تقديم طلب شحنة أو معاينة عينة</h3>
+                <form id="quote-form" onsubmit="submitInquiryForm(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-stone-400 mb-1">الاسم بالكامل / الشركة</label>
+                        <input type="text" id="inq-name" required class="w-full bg-stone-50 dark:bg-charcoal-950 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-stone-400 mb-1">رقم الجوال مع رمز الدولة</label>
+                        <input type="tel" id="inq-phone" placeholder="مثال: +2010..." required class="w-full bg-stone-50 dark:bg-charcoal-950 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-stone-400 mb-1">نوع السوق المستهدف</label>
+                        <select id="inq-market" class="w-full bg-stone-50 dark:bg-charcoal-950 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold-500">
+                            <option value="تصدير دولي">تصدير بحري دولي (حاويات)</option>
+                            <option value="توريد محلي مصر">تجارة وتوريد محلي (مصر)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-stone-400 mb-1">أصناف الفحم والكميات المطلوبة بالطن</label>
+                        <textarea id="inq-msg" rows="2" placeholder="مثال: فحم موالح برتقال نخب أول..." required class="w-full bg-stone-50 dark:bg-charcoal-950 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-stone-900 text-white dark:bg-gold-500 dark:text-black font-extrabold py-3 rounded-xl hover:bg-gold-600 transition-all shadow-md text-xs">تقديم طلب السعر</button>
+                </form>
+            </div>
+            <div class="bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-4 shadow-lg overflow-hidden flex flex-col h-[400px] lg:h-auto">
+                <div class="w-full h-full rounded-2xl overflow-hidden border border-stone-150 dark:border-stone-800">
+                    <iframe id="dyn-map-iframe" src="about:blank" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800 text-center space-y-4">
+        <div class="flex justify-center items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+            <span class="text-white font-extrabold text-sm tracking-wider">SELIM EXPORTS &copy; 2026</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+        </div>
+        <p class="text-xs text-stone-500 max-w-md mx-auto">أعلى مستويات الجودة والالتزام الصارم في تصنيع وغربلة وتصدير الفحم النباتي الطبيعي الفاخر.</p>
+        <div class="pt-2">
+            <button onclick="openAdminLoginModal()" class="text-stone-800 hover:text-stone-700 transition-colors" title="النظام آمن">
+                <i class="fa-solid fa-shield-halved text-xs"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Admin Modals -->
+    <div id="login-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl relative">
+            <button onclick="closeAdminLoginModal()" class="absolute top-4 right-4 w-8 h-8 rounded-xl bg-stone-100 dark:bg-charcoal-800 text-stone-500 hover:text-red-500 flex items-center justify-center transition-all"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center space-y-2 mb-4">
+                <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/10 flex items-center justify-center text-xl text-gold-500"><i class="fa-solid fa-cloud-lock"></i></div>
+                <h3 class="text-lg font-black text-stone-900 dark:text-white">بوابة التحقق السحابية المشفرة</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-xs">سجل دخولك كأدمن من خلال خوادم Firebase الآمنة للتحكم بالنظام.</p>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-[10px] font-bold text-stone-400 mb-1">البريد الإلكتروني للمسؤول</label>
+                    <input type="email" id="admin-email" placeholder="admin@selimexports.com" class="w-full bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold-500 tracking-wide font-sans">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-stone-400 mb-1">كلمة المرور المشفرة</label>
+                    <input type="password" id="admin-password" placeholder="••••••••" class="w-full bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold-500 font-sans tracking-widest">
+                </div>
+                <button onclick="verifyAdminCloudAuth()" class="w-full bg-stone-900 text-white dark:bg-gold-500 dark:text-black font-extrabold py-3 rounded-xl hover:bg-gold-600 transition-all text-xs">سجل الدخول الآمن للـ سحابة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <section id="admin-dashboard-section" class="bg-stone-100 dark:bg-charcoal-950 border-t-2 border-stone-300 dark:border-charcoal-800 py-16 hidden">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 md:p-8 shadow-2xl">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-stone-200 dark:border-stone-800">
+                    <div>
+                        <h2 class="text-2xl font-black text-stone-900 dark:text-white flex items-center gap-2"><i class="fa-solid fa-sliders text-gold-500"></i> لوحة الإشراف المتكاملة والمؤمنة</h2>
+                        <p class="text-stone-500 dark:text-stone-400 text-xs">مستوى الصلاحية السحابي: <span class="text-emerald-500 font-bold">مدير نظام معتمد (Admin)</span></p>
+                    </div>
+                    <button onclick="logoutAdminCloud()" class="bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all">تسجيل الخروج الآمن</button>
+                </div>
+
+                <div class="flex gap-2 border-b border-stone-200 dark:border-stone-800 mb-6 pb-2 flex-wrap">
+                    <button onclick="switchAdminTab('products')" id="tab-btn-products" class="px-4 py-2 text-xs font-black rounded-lg bg-gold-500 text-black shadow-md transition-all">إدارة الكتالوج والعروض</button>
+                    <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="px-4 py-2 text-xs font-bold rounded-lg bg-stone-100 text-stone-600 dark:bg-charcoal-800 dark:text-stone-400 hover:bg-stone-200 transition-all">إعدادات التواصل والخرائط</button>
+                    <button onclick="switchAdminTab('channels')" id="tab-btn-channels" class="px-4 py-2 text-xs font-bold rounded-lg bg-stone-100 text-stone-600 dark:bg-charcoal-800 dark:text-stone-400 hover:bg-stone-200 transition-all">إدارة قنوات الاتصال والأيقونات</button>
+                </div>
+
+                <!-- Tab: Products -->
+                <div id="admin-tab-products" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1 bg-stone-50 dark:bg-charcoal-950 p-5 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4">
+                        <h3 class="text-xs font-bold text-stone-700 dark:text-stone-300 pb-1 border-b border-stone-200 dark:border-stone-800"><i class="fa-solid fa-plus-circle text-emerald-500 ml-1"></i> نشر صنف فحم جديد</h3>
+                        <div>
+                            <label class="block text-[11px] font-bold text-stone-400 mb-1">اسم الفحم</label>
+                            <input type="text" id="prod-name" placeholder="مثال: فحم موالح (برتقال) فاخر" class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-stone-400 mb-1">السوق والاستخدام</label>
+                            <select id="prod-tag" class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs focus:outline-none">
+                                <option value="تصدير">درجة أولى تصدير</option>
+                                <option value="محلي">سوق محلي وتجاري</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-stone-400 mb-1">السعر</label>
+                                <input type="text" id="prod-price" placeholder="مثال: $680 / طن" class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-stone-400 mb-1">رؤية السعر للعامة</label>
+                                <select id="prod-show-price" class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs focus:outline-none">
+                                    <option value="true">إظهار السعر علناً</option>
+                                    <option value="false">إخفاء السعر (تواصل معنا)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-stone-400 mb-1">صورة الفحم</label>
+                            <div class="space-y-1.5">
+                                <input type="file" id="prod-image-file" accept="image/*" onchange="compressAndEncodeImage(event)" class="w-full text-[10px] text-stone-500 file:py-1 file:px-2 file:rounded-md file:border-0 file:bg-gold-500/20 file:text-gold-600 dark:file:text-gold-500 cursor-pointer">
+                                <input type="text" id="prod-image-url" placeholder="أو ضع رابط URL مباشر للصورة" class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs focus:outline-none">
+                                <div id="image-preview-container" class="hidden h-20 w-full rounded-xl overflow-hidden border border-stone-200 dark:border-stone-800"><img id="image-preview" src="" class="w-full h-full object-cover" alt="معاينة"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-stone-400 mb-1">مواصفات ومميزات الشحنة</label>
+                            <textarea id="prod-desc" rows="2" placeholder="رماد ثلجي، كربون مرتفع..." class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs focus:outline-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="flex items-center gap-2 cursor-pointer text-xs text-stone-400 font-semibold">
+                                <input type="checkbox" id="prod-is-offer" class="w-4 h-4 rounded accent-red-500"> إدراج في العروض الحصرية
+                            </label>
+                        </div>
+                        <button onclick="saveProductToCloud()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 rounded-xl text-xs transition-all shadow-md">نشر وحفظ في السحاب</button>
+                    </div>
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="overflow-x-auto rounded-2xl border border-stone-200 dark:border-stone-800">
+                            <table class="w-full text-right text-xs text-stone-500 dark:text-stone-400">
+                                <thead class="bg-stone-50 dark:bg-charcoal-950 text-stone-700 dark:text-stone-300 border-b border-stone-200 dark:border-stone-800">
+                                    <tr>
+                                        <th class="p-3">اسم الصنف</th>
+                                        <th class="p-3">السعر</th>
+                                        <th class="p-3">رؤية السعر</th>
+                                        <th class="p-3">العروض</th>
+                                        <th class="p-3 text-center">إجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-products-table-body"></tbody>
+                            </table>
+                        </div>
+                        <button onclick="resetProductsToDefault()" class="text-[10px] text-stone-400 hover:text-red-500 underline transition-colors">إعادة ضبط الكتالوج للوضع الافتراضي</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Settings -->
+                <div id="admin-tab-settings" class="space-y-6 hidden">
+                    <div class="bg-stone-50 dark:bg-charcoal-950 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-bold text-gold-600 dark:text-gold-500 pb-1 border-b border-stone-200 dark:border-stone-800"><i class="fa-solid fa-map-location-dot ml-1"></i> رابط خريطة Google Maps</h3>
+                            <div>
+                                <label class="block text-[11px] font-bold text-stone-400 mb-1">رابط iframe</label>
+                                <textarea id="setting-map-url" rows="3" placeholder="الصق رابط الخريطة..." class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs focus:outline-none font-mono text-left"></textarea>
+                            </div>
+                            <div class="md:col-span-2 space-y-2 pt-2">
+                                <h3 class="text-xs font-bold text-gold-600 dark:text-gold-500 pb-1 border-b border-stone-200 dark:border-stone-800"><i class="fa-solid fa-file-lines ml-1"></i> نبذة عن الشركة</h3>
+                                <textarea id="setting-about" rows="4" class="w-full bg-white dark:bg-charcoal-900 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2.5 text-xs leading-relaxed focus:outline-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button onclick="saveWebsiteSettingsToCloud()" class="bg-gold-500 hover:bg-gold-600 text-black font-black px-6 py-3 rounded-xl text-xs transition-all shadow-md">حفظ وتعميم الإعدادات</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Channels Management -->
+                <div id="admin-tab-channels" class="space-y-6 hidden">
+                    <div class="bg-stone-50 dark:bg-charcoal-950 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4">
+                        <h3 class="text-xs font-bold text-gold-600 dark:text-gold-500 pb-1 border-b border-stone-200 dark:border-stone-800">
+                            <i class="fa-solid fa-address-book ml-1"></i> قنوات الاتصال (أرقام - بريد - عنوان)
+                        </h3>
+                        <div id="admin-channels-list" class="space-y-3"></div>
+                        <button onclick="addNewChannel()" class="text-xs font-bold text-emerald-600 hover:text-emerald-500 transition-colors">
+                            <i class="fa-solid fa-plus-circle ml-1"></i> إضافة قناة اتصال جديدة
+                        </button>
+                    </div>
+                    <div class="bg-stone-50 dark:bg-charcoal-950 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 space-y-4">
+                        <h3 class="text-xs font-bold text-gold-600 dark:text-gold-500 pb-1 border-b border-stone-200 dark:border-stone-800">
+                            <i class="fa-brands fa-share-nodes ml-1"></i> روابط منصات التواصل الاجتماعي
+                        </h3>
+                        <div id="admin-social-links-list" class="space-y-3"></div>
+                        <button onclick="addNewSocialLink()" class="text-xs font-bold text-emerald-600 hover:text-emerald-500 transition-colors">
+                            <i class="fa-solid fa-plus-circle ml-1"></i> إضافة منصة اجتماعية
+                        </button>
+                    </div>
+                    <div class="flex justify-end">
+                        <button onclick="saveChannelsAndSocialToCloud()" class="bg-gold-500 hover:bg-gold-600 text-black font-black px-6 py-3 rounded-xl text-xs transition-all shadow-md">حفظ قنوات الاتصال والمنصات سحابياً</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Firebase & Core Logic ==================== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, onAuthStateChanged } from
+            "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, addDoc, updateDoc, deleteDoc, onSnapshot, setDoc, getDoc, getDocs } from
+            "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyANq5RBZtNOTKM_gJXG9fx20wB3qMPtu78",
+            authDomain: "selim-charcoal-web.firebaseapp.com",
+            projectId: "selim-charcoal-web",
+            storageBucket: "selim-charcoal-web.firebasestorage.app",
+            messagingSenderId: "275740911120",
+            appId: "1:275740911120:web:eb5ecfcf7273cac8d28c95",
+            measurementId: "G-6BXP9EWH5D"
+        };
+
+        const appId = 'selim-exports-app';
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let productsList = [];
+        let hasInitiallySeeded = false;
+
+        const defaultCharcoalProducts = [{
+            name: "فحم ليمون نخب أول (تصدير)",
+            tag: "تصدير",
+            price: "$680 / طن",
+            showPrice: true,
+            image: "https://images.unsplash.com/photo-1608686217573-616a64e5b141?q=80&w=600&auto=format&fit=crop",
+            desc: "فحم ليمون صافي 100%، بدون أدخنة أو فرقعة، رماد ثلجي أبيض ناعم جداً ونسبة رطوبة أقل من 4%.",
+            isOffer: true
+        }, {
+            name: "فحم جزورين للمطاعم والمشاوي",
+            tag: "محلي",
+            price: "22,000 ج.م / طن",
+            showPrice: false,
+            image: "https://images.unsplash.com/photo-1542332213-9b5a5a3fda35?q=80&w=600&auto=format&fit=crop",
+            desc: "فحم جزورين سريع الاشتعال ويدوم طويلاً، مثالي للمطاعم ومحلات المشاوي الكبرى.",
+            isOffer: false
+        }, {
+            name: "فحم برتقال وموالح فاخر",
+            tag: "تصدير",
+            price: "$620 / طن",
+            showPrice: true,
+            image: "https://images.unsplash.com/photo-1608686217573-616a64e5b141?q=80&w=600&auto=format&fit=crop",
+            desc: "مزيج فاخر من فحم البرتقال والليمون، صلابة عالية جداً تمنع التكسر، زمن اشتعال يتخطى 4 ساعات.",
+            isOffer: true
+        }];
+
+        let websiteSettings = {
+            mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.9747814234033!2d29.9548853!3d31.2215324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDEzJzE3LjUiTiAyOcKwNTcnMTcuNiJF!5e0!3m2!1sar!2seg!4v1625000000000!5m2!1sar!2seg",
+            aboutText: "تعتبر شركة سليم للفحم النباتي (Selim Exports) واحدة من المؤسسات الوطنية الرائدة في إنتاج وتجهيز وتصدير أجود أنواع الفحم النباتي الطبيعي من مزارع وبساتين الفاكهة المصرية إلى كافة دول العالم والمطاعم المحلية.",
+            channels: [
+                { id: 'ch1', type: 'phone', icon: 'fa-solid fa-phone', label: 'المبيعات المحلية (داخل مصر)',
+                    value: '+201015651543', action: 'tel', color: 'emerald' },
+                { id: 'ch2', type: 'phone', icon: 'fa-solid fa-plane-departure', label: 'إدارة التصدير والتعاقد الدولي',
+                    value: '+201022223333', action: 'tel', color: 'blue' },
+                { id: 'ch3', type: 'email', icon: 'fa-solid fa-envelope', label: 'البريد الإلكتروني التجاري',
+                    value: 'info@selimexports.com', action: 'mailto', color: 'gold' },
+                { id: 'ch4', type: 'address', icon: 'fa-solid fa-location-dot', label: 'عنوان الإدارة والمبيعات',
+                    value: 'المكتب التجاري: الإسكندرية / محطة التعبئة: رشيد، جمهورية مصر العربية', action: 'text',
+                    color: 'stone' },
+            ],
+            socialLinks: [
+                { id: 's1', icon: 'fa-brands fa-facebook-f', url: 'https://facebook.com', color: 'blue',
+                platform: 'فيسبوك' },
+                { id: 's2', icon: 'fa-brands fa-linkedin-in', url: 'https://linkedin.com', color: 'blue',
+                    platform: 'لينكد إن' },
+                { id: 's3', icon: 'fa-brands fa-youtube', url: 'https://youtube.com', color: 'red', platform: 'يوتيوب' },
+            ],
+            _seeded: false
+        };
+
+        const productsCollectionRef = collection(db, 'artifacts', appId, 'public', 'data', 'products');
+        const settingsDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'globalConfig');
+
+        function generateLocalId(prefix = 'id') {
+            return prefix + '_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8);
+        }
+
+        function renderUI() {
+            const productsGrid = document.getElementById('products-grid');
+            const offersGrid = document.getElementById('offers-grid');
+            const adminTableBody = document.getElementById('admin-products-table-body');
+            const contactChannelsDiv = document.getElementById('dyn-contact-channels');
+            const socialLinksDiv = document.getElementById('dyn-social-links');
+            const aboutEl = document.getElementById('dyn-about-text');
+            const mapEl = document.getElementById('dyn-map-iframe');
+
+            if (aboutEl) aboutEl.innerText = websiteSettings.aboutText || 'شركة رائدة في إنتاج الفحم النباتي الفاخر.';
+            if (mapEl && websiteSettings.mapUrl) mapEl.src = websiteSettings.mapUrl;
+
+            if (contactChannelsDiv) {
+                contactChannelsDiv.innerHTML = '';
+                const channels = websiteSettings.channels || [];
+                if (channels.length === 0) {
+                    contactChannelsDiv.innerHTML =
+                        '<p class="text-stone-400 text-xs">لم تتم إضافة قنوات اتصال بعد.</p>';
+                } else {
+                    channels.forEach(ch => {
+                        const colorMap = {
+                            emerald: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+                            blue: 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
+                            gold: 'bg-gold-500/10 text-gold-600 dark:text-gold-500',
+                            stone: 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300',
+                            red: 'bg-red-500/10 text-red-600 dark:text-red-400',
+                            green: 'bg-green-500/10 text-green-600 dark:text-green-400',
+                            purple: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
+                        };
+                        const iconColorClass = colorMap[ch.color] || colorMap['stone'];
+                        let actionHref = '#';
+                        let actionTarget = '';
+                        if (ch.action === 'tel') actionHref = 'tel:' + ch.value.replace(/\s+/g, '');
+                        else if (ch.action === 'mailto') actionHref = 'mailto:' + ch.value;
+                        else if (ch.action === 'whatsapp') actionHref = 'https://wa.me/' + ch.value.replace(
+                            /[^0-9]/g, '');
+                        if (ch.action === 'whatsapp' || ch.action === 'mailto') actionTarget = '_blank';
+
+                        const div = document.createElement('div');
+                        div.className = 'flex items-center gap-3 channel-card';
+                        div.innerHTML = `
+                            <div class="w-10 h-10 rounded-xl ${iconColorClass.split(' ')[0]} flex items-center justify-center text-xl ${iconColorClass.split(' ').slice(1).join(' ')}">
+                                <i class="${ch.icon}"></i>
+                            </div>
+                            <div>
+                                <span class="block text-[10px] text-stone-400 font-bold">${ch.label}</span>
+                                ${ch.action === 'text' 
+                                    ? `<span class="text-xs font-bold text-stone-700 dark:text-stone-300">${ch.value}</span>`
+                                    : `<a href="${actionHref}" target="${actionTarget}" class="hover:text-${ch.color}-500 text-sm font-extrabold text-stone-900 dark:text-white">${ch.value}</a>`
+                                }
+                            </div>
+                        `;
+                        contactChannelsDiv.appendChild(div);
+                    });
+                }
+            }
+
+            if (socialLinksDiv) {
+                socialLinksDiv.innerHTML = '';
+                const socials = websiteSettings.socialLinks || [];
+                socials.forEach(sl => {
+                    const hoverColorMap = {
+                        blue: 'hover:bg-blue-600',
+                        red: 'hover:bg-red-600',
+                        green: 'hover:bg-green-600',
+                        purple: 'hover:bg-purple-600',
+                        stone: 'hover:bg-stone-600',
+                    };
+                    const hoverClass = hoverColorMap[sl.color] || 'hover:bg-blue-600';
+                    const a = document.createElement('a');
+                    a.href = sl.url || '#';
+                    a.target = '_blank';
+                    a.className =
+                        `w-9 h-9 rounded-xl bg-stone-100 dark:bg-charcoal-800 text-stone-700 dark:text-stone-300 flex items-center justify-center ${hoverClass} hover:text-white transition-all text-sm`;
+                    a.title = sl.platform || '';
+                    a.innerHTML = `<i class="${sl.icon}"></i>`;
+                    socialLinksDiv.appendChild(a);
+                });
+            }
+
+            if (productsGrid) productsGrid.innerHTML = '';
+            if (offersGrid) offersGrid.innerHTML = '';
+            if (adminTableBody) adminTableBody.innerHTML = '';
+
+            const phoneChannel = (websiteSettings.channels || []).find(c => c.type === 'phone' || c.action ===
+            'tel');
+            const whatsappNumber = phoneChannel ? phoneChannel.value.replace(/[^0-9]/g, '') : '201015651543';
+
+            productsList.forEach(product => {
+                const isShowPrice = product.showPrice === true || product.showPrice === 'true';
+                const isOffer = product.isOffer === true || product.isOffer === 'true';
+
+                const priceHTML = isShowPrice ?
+                    `<p class="text-md font-bold text-gold-600 font-sans">${product.price}</p>` :
+                    `<p class="text-[11px] font-bold text-emerald-600"><i class="fa-brands fa-whatsapp ml-1"></i> تواصل لطلب عرض السعر</p>`;
+
+                if (productsGrid) {
+                    const card = document.createElement('div');
+                    card.className =
+                        "bg-white dark:bg-charcoal-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-900 shadow-sm hover:border-gold-500/40 transition-all flex flex-col justify-between product-card-item";
+                    card.setAttribute('data-tag', product.tag);
+                    card.innerHTML = `
+                        <div>
+                            <div class="h-44 bg-stone-100 dark:bg-stone-800 relative bg-cover bg-center" style="background-image: url('${product.image}')">
+                                <span class="absolute top-3 right-3 text-[10px] font-bold px-2.5 py-1 rounded-md text-white ${product.tag === 'تصدير' ? 'bg-amber-600' : 'bg-stone-600'}">${product.tag === 'تصدير' ? 'درجة أولى تصدير' : 'سوق محلي'}</span>
+                                ${isOffer ? '<span class="absolute top-3 left-3 text-[9px] font-bold px-2 py-0.5 rounded-md bg-red-500 text-white animate-pulse">عرض خاص</span>' : ''}
+                            </div>
+                            <div class="p-5 space-y-1.5">
+                                <h3 class="text-base font-black text-stone-900 dark:text-white">${product.name}</h3>
+                                <p class="text-stone-500 dark:text-stone-400 text-xs leading-relaxed line-clamp-3">${product.desc}</p>
+                            </div>
+                        </div>
+                        <div class="p-5 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between gap-2">
+                            ${priceHTML}
+                            <a href="https://wa.me/${whatsappNumber}?text=استفسار عن صنف: ${encodeURIComponent(product.name)}" target="_blank" class="px-3 py-1.5 rounded-lg bg-stone-100 dark:bg-charcoal-800 hover:bg-gold-500 hover:text-black dark:text-stone-300 dark:hover:text-black text-xs font-bold transition-all">طلب تسعيرة شحنة</a>
+                        </div>
+                    `;
+                    productsGrid.appendChild(card);
+                }
+
+                if (isOffer && offersGrid) {
+                    const offerCard = document.createElement('div');
+                    offerCard.className =
+                        "bg-white dark:bg-charcoal-800 border border-red-500/10 rounded-2xl p-4 flex flex-col sm:flex-row gap-4 items-center shadow-sm";
+                    offerCard.innerHTML = `
+                        <img src="${product.image}" class="w-20 h-20 rounded-xl object-cover border border-stone-200 dark:border-stone-700" alt="${product.name}">
+                        <div class="space-y-1 text-center sm:text-right flex-1 w-full">
+                            <h3 class="text-sm font-bold text-stone-900 dark:text-white">${product.name} <span class="bg-red-50 dark:bg-red-950/40 text-red-500 text-[9px] font-bold px-1.5 py-0.5 rounded border border-red-100 dark:border-red-900 mr-1">خصم تعاقدي</span></h3>
+                            <p class="text-stone-500 dark:text-stone-400 text-[11px] leading-relaxed line-clamp-2">${product.desc}</p>
+                            <div class="pt-1.5 flex items-center justify-between text-xs">
+                                ${isShowPrice ? `<span class="font-bold text-red-500 font-sans">${product.price}</span>` : '<span class="text-stone-400 text-[10px]">سعر مخفض للكميات الكبرى</span>'}
+                                <a href="https://wa.me/${whatsappNumber}?text=طلب الاستفادة من خصم: ${encodeURIComponent(product.name)}" target="_blank" class="font-bold text-red-500 text-[11px] hover:underline">الاستفادة من العرض الآن &larr;</a>
+                            </div>
+                        </div>
+                    `;
+                    offersGrid.appendChild(offerCard);
+                }
+
+                if (adminTableBody) {
+                    const adminRow = document.createElement('tr');
+                    adminRow.className =
+                        "border-b border-stone-200 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-900/20";
+                    adminRow.innerHTML = `
+                        <td class="p-3 font-bold text-stone-900 dark:text-white">${product.name} <span class="text-[9px] text-stone-400 block font-normal">(${product.tag})</span></td>
+                        <td class="p-3 font-mono font-bold">${product.price}</td>
+                        <td class="p-3">
+                            <button onclick="toggleCloudPriceVisibility('${product.id}')" class="px-2 py-1 rounded text-[10px] font-black ${isShowPrice ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400' : 'bg-stone-100 text-stone-400 dark:bg-stone-800'}">
+                                ${isShowPrice ? 'معروض علناً' : 'مخفي وتجاري'}
+                            </button>
+                        </td>
+                        <td class="p-3">
+                            <button onclick="toggleCloudOfferStatus('${product.id}')" class="px-2 py-1 rounded text-[10px] font-black ${isOffer ? 'bg-red-50 text-red-500 dark:bg-red-950/40 dark:text-red-400' : 'bg-stone-100 text-stone-400 dark:bg-stone-800'}">
+                                ${isOffer ? 'نشط بالعروض' : 'عادي'}
+                            </button>
+                        </td>
+                        <td class="p-3 text-center">
+                            <button onclick="deleteCloudProduct('${product.id}')" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center transition-colors mx-auto"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                        </td>
+                    `;
+                    adminTableBody.appendChild(adminRow);
+                }
+            });
+
+            renderAdminChannelsList();
+            renderAdminSocialLinksList();
+        }
+
+        function renderAdminChannelsList() {
+            const container = document.getElementById('admin-channels-list');
+            if (!container) return;
+            container.innerHTML = '';
+            const channels = websiteSettings.channels || [];
+            channels.forEach((ch, index) => {
+                const div = document.createElement('div');
+                div.className =
+                    'flex flex-wrap items-center gap-2 bg-white dark:bg-charcoal-900 p-3 rounded-xl border border-stone-200 dark:border-stone-800';
+                div.innerHTML = `
+                    <i class="${ch.icon} text-lg text-${ch.color}-500 w-8 text-center"></i>
+                    <input type="text" value="${ch.label}" placeholder="التسمية" data-ch-id="${ch.id}" data-field="label" class="flex-1 min-w-[120px] bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input">
+                    <input type="text" value="${ch.value}" placeholder="القيمة" data-ch-id="${ch.id}" data-field="value" class="flex-1 min-w-[120px] bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input text-left font-mono">
+                    <select data-ch-id="${ch.id}" data-field="action" class="bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input">
+                        <option value="tel" ${ch.action === 'tel' ? 'selected' : ''}>هاتف</option>
+                        <option value="mailto" ${ch.action === 'mailto' ? 'selected' : ''}>بريد</option>
+                        <option value="whatsapp" ${ch.action === 'whatsapp' ? 'selected' : ''}>واتساب</option>
+                        <option value="text" ${ch.action === 'text' ? 'selected' : ''}>نص</option>
+                    </select>
+                    <input type="text" value="${ch.icon}" placeholder="أيقونة FA" data-ch-id="${ch.id}" data-field="icon" class="w-28 bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input text-left font-mono">
+                    <select data-ch-id="${ch.id}" data-field="color" class="bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input">
+                        <option value="emerald" ${ch.color === 'emerald' ? 'selected' : ''}>أخضر</option>
+                        <option value="blue" ${ch.color === 'blue' ? 'selected' : ''}>أزرق</option>
+                        <option value="gold" ${ch.color === 'gold' ? 'selected' : ''}>ذهبي</option>
+                        <option value="stone" ${ch.color === 'stone' ? 'selected' : ''}>رمادي</option>
+                        <option value="red" ${ch.color === 'red' ? 'selected' : ''}>أحمر</option>
+                        <option value="purple" ${ch.color === 'purple' ? 'selected' : ''}>بنفسجي</option>
+                    </select>
+                    <button onclick="deleteChannel('${ch.id}')" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center transition-colors shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>
+                `;
+                container.appendChild(div);
+            });
+            container.querySelectorAll('.channel-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const chId = this.getAttribute('data-ch-id');
+                    const field = this.getAttribute('data-field');
+                    const chIndex = (websiteSettings.channels || []).findIndex(c => c.id ===
+                        chId);
+                    if (chIndex >= 0) {
+                        websiteSettings.channels[chIndex][field] = this.value;
+                    }
+                });
+            });
+        }
+
+        function renderAdminSocialLinksList() {
+            const container = document.getElementById('admin-social-links-list');
+            if (!container) return;
+            container.innerHTML = '';
+            const socials = websiteSettings.socialLinks || [];
+            socials.forEach((sl, index) => {
+                const div = document.createElement('div');
+                div.className =
+                    'flex flex-wrap items-center gap-2 bg-white dark:bg-charcoal-900 p-3 rounded-xl border border-stone-200 dark:border-stone-800';
+                div.innerHTML = `
+                    <i class="${sl.icon} text-lg text-${sl.color}-500 w-8 text-center"></i>
+                    <input type="text" value="${sl.platform || ''}" placeholder="اسم المنصة" data-sl-id="${sl.id}" data-field="platform" class="flex-1 min-w-[100px] bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input">
+                    <input type="text" value="${sl.url}" placeholder="الرابط" data-sl-id="${sl.id}" data-field="url" class="flex-1 min-w-[150px] bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input text-left font-mono">
+                    <input type="text" value="${sl.icon}" placeholder="أيقونة FA" data-sl-id="${sl.id}" data-field="icon" class="w-28 bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input text-left font-mono">
+                    <select data-sl-id="${sl.id}" data-field="color" class="bg-stone-50 dark:bg-charcoal-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input">
+                        <option value="blue" ${sl.color === 'blue' ? 'selected' : ''}>أزرق</option>
+                        <option value="red" ${sl.color === 'red' ? 'selected' : ''}>أحمر</option>
+                        <option value="green" ${sl.color === 'green' ? 'selected' : ''}>أخضر</option>
+                        <option value="purple" ${sl.color === 'purple' ? 'selected' : ''}>بنفسجي</option>
+                        <option value="stone" ${sl.color === 'stone' ? 'selected' : ''}>رمادي</option>
+                        <option value="gold" ${sl.color === 'gold' ? 'selected' : ''}>ذهبي</option>
+                    </select>
+                    <button onclick="deleteSocialLink('${sl.id}')" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center transition-colors shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>
+                `;
+                container.appendChild(div);
+            });
+            container.querySelectorAll('.social-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const slId = this.getAttribute('data-sl-id');
+                    const field = this.getAttribute('data-field');
+                    const slIndex = (websiteSettings.socialLinks || []).findIndex(s => s.id === slId);
+                    if (slIndex >= 0) {
+                        websiteSettings.socialLinks[slIndex][field] = this.value;
+                    }
+                });
+            });
+        }
+
+        function addNewChannel() {
+            if (!websiteSettings.channels) websiteSettings.channels = [];
+            websiteSettings.channels.push({
+                id: generateLocalId('ch'),
+                type: 'phone',
+                icon: 'fa-solid fa-phone',
+                label: 'قناة جديدة',
+                value: '+20',
+                action: 'tel',
+                color: 'emerald'
+            });
+            renderAdminChannelsList();
+        }
+
+        function deleteChannel(chId) {
+            window.showConfirmModal('حذف قناة الاتصال', 'هل أنت متأكد من حذف قناة الاتصال هذه؟', () => {
+                websiteSettings.channels = (websiteSettings.channels || []).filter(c => c.id !== chId);
+                renderAdminChannelsList();
+                window.showToast('تم حذف القناة محلياً. اضغط "حفظ" لتثبيت التغيير سحابياً.', 'info');
+            });
+        }
+
+        function addNewSocialLink() {
+            if (!websiteSettings.socialLinks) websiteSettings.socialLinks = [];
+            websiteSettings.socialLinks.push({
+                id: generateLocalId('sl'),
+                icon: 'fa-brands fa-instagram',
+                url: 'https://',
+                color: 'purple',
+                platform: 'منصة جديدة'
+            });
+            renderAdminSocialLinksList();
+        }
+
+        function deleteSocialLink(slId) {
+            window.showConfirmModal('حذف المنصة الاجتماعية', 'هل أنت متأكد من حذف رابط المنصة هذا؟', () => {
+                websiteSettings.socialLinks = (websiteSettings.socialLinks || []).filter(s => s.id !== slId);
+                renderAdminSocialLinksList();
+                window.showToast('تم حذف المنصة محلياً. اضغط "حفظ" لتثبيت التغيير سحابياً.', 'info');
+            });
+        }
+
+        async function saveChannelsAndSocialToCloud() {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) {
+                window.showToast('عذراً، يجب تسجيل الدخول كمسؤول أولاً.', 'error');
+                return;
+            }
+            try {
+                await setDoc(settingsDocRef, {
+                    channels: websiteSettings.channels || [],
+                    socialLinks: websiteSettings.socialLinks || [],
+                }, { merge: true });
+                window.showToast('تم حفظ قنوات الاتصال والمنصات الاجتماعية سحابياً بنجاح 🌐', 'success');
+            } catch (e) {
+                window.showToast('فشل الحفظ السحابي: ' + e.message, 'error');
+            }
+        }
+
+        async function seedInitialCloudDatabase() {
+            try {
+                const settingsSnap = await getDoc(settingsDocRef);
+                if (settingsSnap.exists() && settingsSnap.data()._seeded === true) {
+                    hasInitiallySeeded = true;
+                    return;
+                }
+                const productsSnap = await getDocs(productsCollectionRef);
+                if (productsSnap.size > 0) {
+                    await setDoc(settingsDocRef, { _seeded: true }, { merge: true });
+                    hasInitiallySeeded = true;
+                    return;
+                }
+                for (const prod of defaultCharcoalProducts) {
+                    await addDoc(productsCollectionRef, prod);
+                }
+                await setDoc(settingsDocRef, { ...websiteSettings, _seeded: true }, { merge: false });
+                hasInitiallySeeded = true;
+                console.log('✅ تم البذر الأولي الناجح.');
+            } catch (error) {
+                console.error('فشل البذر الأولي:', error);
+            }
+        }
+
+        async function resetProductsToDefault() {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) {
+                window.showToast('عذراً، يجب تسجيل الدخول كمسؤول أولاً.', 'error');
+                return;
+            }
+            window.showConfirmModal('إعادة ضبط الكتالوج', 'سيتم حذف جميع المنتجات الحالية وإعادة إضافة المنتجات الافتراضية. هل أنت متأكد؟',
+                async () => {
+                    try {
+                        for (const prod of productsList) {
+                            await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products',
+                                prod.id));
+                        }
+                        for (const prod of defaultCharcoalProducts) {
+                            await addDoc(productsCollectionRef, prod);
+                        }
+                        window.showToast('تمت إعادة ضبط الكتالوج بنجاح ✅', 'success');
+                    } catch (e) {
+                        window.showToast('فشلت إعادة الضبط: ' + e.message, 'error');
+                    }
+                });
+        }
+
+        function fillSettingsFormInputs() {
+            const mapUrlEl = document.getElementById('setting-map-url');
+            const aboutEl = document.getElementById('setting-about');
+            if (mapUrlEl) mapUrlEl.value = websiteSettings.mapUrl || '';
+            if (aboutEl) aboutEl.value = websiteSettings.aboutText || '';
+            renderAdminChannelsList();
+            renderAdminSocialLinksList();
+        }
+
+        function setupLiveCloudListeners() {
+            onSnapshot(productsCollectionRef, (snapshot) => {
+                productsList = [];
+                snapshot.forEach(doc => {
+                    productsList.push({ id: doc.id, ...doc.data() });
+                });
+                renderUI();
+                localStorage.setItem('selim_exports_prods_v4', JSON.stringify(productsList));
+            });
+
+            onSnapshot(settingsDocRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    websiteSettings = {
+                        ...websiteSettings,
+                        ...data,
+                        channels: data.channels || websiteSettings.channels || [],
+                        socialLinks: data.socialLinks || websiteSettings.socialLinks || [],
+                    };
+                    if (data._seeded === true) hasInitiallySeeded = true;
+                }
+                fillSettingsFormInputs();
+                renderUI();
+                localStorage.setItem('selim_exports_settings_v4', JSON.stringify(websiteSettings));
+            });
+        }
+
+        const verifyAdminCloudAuth = async function() {
+            const email = document.getElementById('admin-email').value.trim();
+            const password = document.getElementById('admin-password').value.trim();
+            if (!email || !password) {
+                window.showToast('يرجى إدخال البريد الإلكتروني وكلمة المرور الخاصة بالإدارة.', 'warning');
+                return;
+            }
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                closeAdminLoginModal();
+            } catch (error) {
+                console.error('Auth Fail:', error);
+                window.showToast('فشلت عملية التحقق السحابي! البريد أو كلمة المرور غير صحيحة.', 'error');
+            }
+        };
+
+        const logoutAdminCloud = async function() {
+            try {
+                await signOut(auth);
+                document.getElementById('admin-dashboard-section').classList.add('hidden');
+                window.showToast('تم تسجيل الخروج وتأمين لوحة التحكم بنجاح 🔒', 'info');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (ex) {
+                window.showToast('فشل تسجيل الخروج.', 'error');
+            }
+        };
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user && !user.isAnonymous) {
+                document.getElementById('admin-dashboard-section').classList.remove('hidden');
+                if (!hasInitiallySeeded) {
+                    await seedInitialCloudDatabase();
+                }
+                setupLiveCloudListeners();
+            } else {
+                document.getElementById('admin-dashboard-section').classList.add('hidden');
+                if (!user) {
+                    try {
+                        await signInAnonymously(auth);
+                        if (!hasInitiallySeeded) {
+                            await seedInitialCloudDatabase();
+                        }
+                        setupLiveCloudListeners();
+                    } catch (err) {
+                        console.error('فشل تسجيل الدخول المجهول:', err);
+                        loadLocalBackup();
+                    }
+                } else {
+                    if (!hasInitiallySeeded) {
+                        await seedInitialCloudDatabase();
+                    }
+                    setupLiveCloudListeners();
+                }
+            }
+        });
+
+        const saveProductToCloud = async function() {
+            const name = document.getElementById('prod-name').value.trim();
+            const tag = document.getElementById('prod-tag').value;
+            const price = document.getElementById('prod-price').value.trim() || '$650 / طن';
+            const showPrice = document.getElementById('prod-show-price').value === 'true';
+            const imageUrlInput = document.getElementById('prod-image-url').value.trim();
+            const desc = document.getElementById('prod-desc').value.trim() || 'فحم نباتي طبيعي فاخر عالي الصلابة والجودة.';
+            const isOffer = document.getElementById('prod-is-offer').checked;
+
+            if (!auth.currentUser || auth.currentUser.isAnonymous) {
+                window.showToast('عذراً، يجب تسجيل الدخول كمسؤول أولاً.', 'error');
+                return;
+            }
+            if (!name) {
+                window.showToast('يرجى تدوين اسم الفحم المضاف أولاً.', 'warning');
+                return;
+            }
+
+            let image =
+                'https://images.unsplash.com/photo-1542332213-9b5a5a3fda35?q=80&w=600&auto=format&fit=crop';
+            const previewImg = document.getElementById('image-preview');
+            if (previewImg && previewImg.src && previewImg.src.startsWith('data:image')) image = previewImg.src;
+            else if (imageUrlInput) image = imageUrlInput;
+
+            const newProdObj = { name, tag, price, showPrice, image, desc, isOffer };
+            try {
+                await addDoc(productsCollectionRef, newProdObj);
+                window.showToast('تم نشر وحفظ صنف الفحم الجديد سحابياً 🚀', 'success');
+                document.getElementById('prod-name').value = '';
+                document.getElementById('prod-price').value = '';
+                document.getElementById('prod-image-url').value = '';
+                document.getElementById('prod-desc').value = '';
+                document.getElementById('prod-image-file').value = '';
+                document.getElementById('image-preview-container').classList.add('hidden');
+                document.getElementById('prod-is-offer').checked = false;
+            } catch (ex) {
+                window.showToast('خطأ أثناء النشر: ' + ex.message, 'error');
+            }
+        };
+
+        const saveWebsiteSettingsToCloud = async function() {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) {
+                window.showToast('عذراً، يجب تسجيل الدخول كمسؤول أولاً.', 'error');
+                return;
+            }
+            const mapUrl = document.getElementById('setting-map-url').value.trim();
+            const aboutText = document.getElementById('setting-about').value.trim();
+            const updatedSettings = {
+                mapUrl: mapUrl || websiteSettings.mapUrl,
+                aboutText: aboutText || websiteSettings.aboutText,
+            };
+            window.showConfirmModal('تعديل بيانات المؤسسة والخرائط',
+                'هل أنت متأكد من رغبتك في حفظ وتعميم الإعدادات المحدثة للجمهور حياً عبر الإنترنت؟', async () => {
+                    try {
+                        await setDoc(settingsDocRef, updatedSettings, { merge: true });
+                        window.showToast('تم مزامنة وتعميم الإعدادات سحابياً بنجاح 🌐', 'success');
+                    } catch (e) {
+                        window.showToast('فشلت المزامنة السحابية: ' + e.message, 'error');
+                    }
+                });
+        };
+
+        const toggleCloudPriceVisibility = async function(id) {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) return;
+            const prod = productsList.find(p => p.id === id);
+            if (!prod) return;
+            const updatedState = !(prod.showPrice === true || prod.showPrice === 'true');
+            try {
+                await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), { showPrice: updatedState });
+                window.showToast('تم تحديث خيار رؤية الأسعار بنجاح', 'success');
+            } catch (ex) { window.showToast('خطأ بالتعديل: ' + ex.message, 'error'); }
+        };
+
+        const toggleCloudOfferStatus = async function(id) {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) return;
+            const prod = productsList.find(p => p.id === id);
+            if (!prod) return;
+            const updatedState = !(prod.isOffer === true || prod.isOffer === 'true');
+            try {
+                await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), { isOffer: updatedState });
+                window.showToast('تم تحديث حالة الصنف في قسم العروض', 'success');
+            } catch (ex) { window.showToast('خطأ بالتعديل: ' + ex.message, 'error'); }
+        };
+
+        const deleteCloudProduct = function(id) {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) return;
+            window.showConfirmModal('حذف صنف الفحم نهائياً',
+                'هل أنت متأكد تماماً من رغبتك في إزالة هذا الصنف من العرض والكتالوج السحابي؟', async () => {
+                    try {
+                        await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id));
+                        window.showToast('تم إزالة المستند من الكتالوج السحابي 🗑️', 'success');
+                    } catch (ex) { window.showToast('خطأ بالحذف: ' + ex.message, 'error'); }
+                });
+        };
+
+        const filterCatalog = function(tag) {
+            const items = document.querySelectorAll('.product-card-item');
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.className =
+                    'filter-btn px-6 py-2 rounded-xl bg-white dark:bg-charcoal-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-800 font-bold text-xs whitespace-nowrap shadow-sm';
+            });
+            const activeBtn = document.getElementById(`filter-btn-${tag}`);
+            if (activeBtn) {
+                if (tag === 'all') activeBtn.className =
+                    'filter-btn px-6 py-2 rounded-xl bg-stone-900 text-white dark:bg-gold-500 dark:text-black font-extrabold text-xs whitespace-nowrap shadow-md';
+                else activeBtn.className =
+                    'filter-btn px-6 py-2 rounded-xl bg-gold-500 text-black font-extrabold text-xs whitespace-nowrap shadow-md';
+            }
+            items.forEach(c => {
+                if (tag === 'all' || c.getAttribute('data-tag') === tag) c.style.display = 'flex';
+                else c.style.display = 'none';
+            });
+        };
+
+        function loadLocalBackup() {
+            const localProds = localStorage.getItem('selim_exports_prods_v4');
+            const localSettings = localStorage.getItem('selim_exports_settings_v4');
+            if (localProds) {
+                try { productsList = JSON.parse(localProds); } catch (e) { productsList = []; }
+            }
+            if (productsList.length === 0) {
+                productsList = defaultCharcoalProducts.map((p, i) => ({ id: `local_${i}`, ...p }));
+            }
+            if (localSettings) {
+                try {
+                    websiteSettings = { ...websiteSettings, ...JSON.parse(localSettings) };
+                } catch (e) {}
+            }
+            fillSettingsFormInputs();
+            renderUI();
+        }
+
+        window.verifyAdminCloudAuth = verifyAdminCloudAuth;
+        window.logoutAdminCloud = logoutAdminCloud;
+        window.saveProductToCloud = saveProductToCloud;
+        window.saveWebsiteSettingsToCloud = saveWebsiteSettingsToCloud;
+        window.toggleCloudPriceVisibility = toggleCloudPriceVisibility;
+        window.toggleCloudOfferStatus = toggleCloudOfferStatus;
+        window.deleteCloudProduct = deleteCloudProduct;
+        window.filterCatalog = filterCatalog;
+        window.loadLocalBackup = loadLocalBackup;
+        window.resetProductsToDefault = resetProductsToDefault;
+        window.addNewChannel = addNewChannel;
+        window.deleteChannel = deleteChannel;
+        window.addNewSocialLink = addNewSocialLink;
+        window.deleteSocialLink = deleteSocialLink;
+        window.saveChannelsAndSocialToCloud = saveChannelsAndSocialToCloud;
+    </script>
+
+    <!-- UI Controllers -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) themeIcon.className = 'fa-solid fa-sun';
+        } else {
+            document.documentElement.classList.remove('dark');
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) themeIcon.className = 'fa-solid fa-moon';
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const hero = document.getElementById('home');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                if (icon) icon.className = 'fa-solid fa-moon';
+                if (hero) hero.style.backgroundImage =
+                    "linear-gradient(rgba(255,255,255,0.85), rgba(245,245,240,0.95)), url('https://images.unsplash.com/photo-1608686217573-616a64e5b141?q=80&w=1600&auto=format&fit=crop')";
+                localStorage.setItem('theme', 'light');
+                showToast('تم الانتقال للمظهر الفاتح العصري', 'info');
+            } else {
+                html.classList.add('dark');
+                if (icon) icon.className = 'fa-solid fa-sun';
+                if (hero) hero.style.backgroundImage =
+                    "linear-gradient(rgba(12,12,14,0.85), rgba(12,12,14,0.98)), url('https://images.unsplash.com/photo-1608686217573-616a64e5b141?q=80&w=1600&auto=format&fit=crop')";
+                localStorage.setItem('theme', 'dark');
+                showToast('تم الانتقال للوضع الداكن الفخم', 'info');
+            }
+        }
+
+        function openAdminLoginModal() {
+            const m = document.getElementById('login-modal');
+            if (m) { m.classList.remove('hidden');
+                document.getElementById('admin-email').focus(); }
+        }
+
+        function closeAdminLoginModal() {
+            const m = document.getElementById('login-modal');
+            if (m) { m.classList.add('hidden');
+                document.getElementById('admin-email').value = '';
+                document.getElementById('admin-password').value = ''; }
+        }
+
+        function switchAdminTab(tabName) {
+            const tabs = {
+                'products': document.getElementById('admin-tab-products'),
+                'settings': document.getElementById('admin-tab-settings'),
+                'channels': document.getElementById('admin-tab-channels'),
+            };
+            const btns = {
+                'products': document.getElementById('tab-btn-products'),
+                'settings': document.getElementById('tab-btn-settings'),
+                'channels': document.getElementById('tab-btn-channels'),
+            };
+            Object.keys(tabs).forEach(key => {
+                if (tabs[key]) tabs[key].classList.add('hidden');
+                if (btns[key]) btns[key].className =
+                    'px-4 py-2 text-xs font-bold rounded-lg bg-stone-100 text-stone-600 dark:bg-charcoal-800 dark:text-stone-400 hover:bg-stone-200 transition-all';
+            });
+            if (tabs[tabName]) tabs[tabName].classList.remove('hidden');
+            if (btns[tabName]) btns[tabName].className =
+                'px-4 py-2 text-xs font-black rounded-lg bg-gold-500 text-black shadow-md transition-all';
+        }
+
+        function compressAndEncodeImage(event) {
+            const f = event.target.files[0];
+            if (!f) return;
+            const r = new FileReader();
+            r.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const max_w = 480;
+                    const scale = max_w / img.width;
+                    canvas.width = max_w;
+                    canvas.height = img.height * scale;
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    const base64Str = canvas.toDataURL('image/jpeg', 0.65);
+                    const container = document.getElementById('image-preview-container');
+                    const preview = document.getElementById('image-preview');
+                    if (preview && container) {
+                        preview.src = base64Str;
+                        container.classList.remove('hidden');
+                    }
+                    showToast('تم ضغط ومعالجة ملف الصورة للتخزين المجاني السحابي ✅', 'info');
+                };
+                img.src = e.target.result;
+            };
+            r.readAsDataURL(f);
+        }
+
+        function submitInquiryForm(event) {
+            event.preventDefault();
+            const n = document.getElementById('inq-name').value;
+            const p = document.getElementById('inq-phone').value;
+            const m = document.getElementById('inq-market').value;
+            const msg = document.getElementById('inq-msg').value;
+            let whatsappNum = '201015651543';
+            if (window._websiteSettings && window._websiteSettings.channels) {
+                const phoneCh = window._websiteSettings.channels.find(c => c.type === 'phone' || c.action === 'tel');
+                if (phoneCh) whatsappNum = phoneCh.value.replace(/[^0-9]/g, '');
+            }
+            const txt =
+                `مرحباً سليم للفحم النباتي (طلب فحص من موقع الويب):\nالاسم: ${n}\nالجوال: ${p}\nالسوق: ${m}\nالطلب: ${msg}`;
+            window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(txt)}`, '_blank');
+            showToast('تم تجهيز تفاصيل طلبك وتوجيهه إلى مبيعات الواتساب!', 'success');
+        }
+
+        function showToast(text, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const t = document.createElement('div');
+            let bg = 'bg-stone-900 text-white dark:bg-white dark:text-stone-900';
+            let icon = 'fa-solid fa-circle-info text-gold-500';
+            if (type === 'success') { bg = 'bg-emerald-600 text-white';
+                icon = 'fa-solid fa-circle-check text-white'; } else if (type === 'error') { bg =
+                'bg-red-600 text-white';
+                icon = 'fa-solid fa-circle-xmark text-white'; } else if (type === 'warning') { bg =
+                'bg-amber-500 text-black';
+                icon = 'fa-solid fa-triangle-exclamation text-black'; }
+            t.className =
+                `${bg} p-4 rounded-2xl flex items-center gap-3 shadow-xl transform translate-y-2 opacity-0 transition-all duration-300 border border-white/10 text-xs font-bold`;
+            t.innerHTML = `<i class="${icon} text-base shrink-0"></i> <span>${text}</span>`;
+            container.appendChild(t);
+            setTimeout(() => t.classList.remove('translate-y-2', 'opacity-0'), 10);
+            setTimeout(() => { t.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => t.remove(), 300); }, 4000);
+        }
+
+        let confirmActionCallback = null;
+
+        function showConfirmModal(title, message, onConfirm) {
+            const tEl = document.getElementById('confirm-title');
+            const mEl = document.getElementById('confirm-message');
+            const modal = document.getElementById('confirm-modal');
+            if (tEl) tEl.innerText = title;
+            if (mEl) mEl.innerText = message;
+            if (modal) modal.classList.remove('hidden');
+            confirmActionCallback = onConfirm;
+        }
+
+        document.getElementById('confirm-cancel-btn').addEventListener('click', () => {
+            document.getElementById('confirm-modal').classList.add('hidden');
+            confirmActionCallback = null;
+        });
+        document.getElementById('confirm-ok-btn').addEventListener('click', () => {
+            document.getElementById('confirm-modal').classList.add('hidden');
+            if (confirmActionCallback) { confirmActionCallback();
+                confirmActionCallback = null; }
+        });
+
+        window.toggleTheme = toggleTheme;
+        window.openAdminLoginModal = openAdminLoginModal;
+        window.closeAdminLoginModal = closeAdminLoginModal;
+        window.switchAdminTab = switchAdminTab;
+        window.compressAndEncodeImage = compressAndEncodeImage;
+        window.submitInquiryForm = submitInquiryForm;
+        window.showToast = showToast;
+        window.showConfirmModal = showConfirmModal;
+    </script>
+</body>
+</html>
