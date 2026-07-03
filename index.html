@@ -153,13 +153,12 @@
         [dir="ltr"] .footer-link:hover {
             transform: translateX(4px);
         }
-        /* Transition for language switch */
         .lang-transition {
             transition: all 0.25s ease-in-out;
         }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-900 dark:bg-dark-950 dark:text-stone-100 min-h-scree lang-transition">
+<body class="bg-stone-50 text-stone-900 dark:bg-dark-950 dark:text-stone-100 min-h-screen lang-transition">
 
     <!-- ====== نظام التنبيهات ====== -->
     <div id="toast-container" class="fixed bottom-5 left-5 z-50 flex flex-col gap-2 max-w-sm w-full"></div>
@@ -180,12 +179,12 @@
     <div class="top-bar hidden md:block">
         <div class="container mx-auto px-4 flex flex-wrap justify-between items-center text-xs">
             <div class="flex items-center gap-6">
-                <span><i class="fa-solid fa-phone ml-1.5 text-primary-500"></i> <a href="tel:+201015651543">+20 101 565 1543</a></span>
-                <span><i class="fa-solid fa-envelope ml-1.5 text-primary-500"></i> <a href="mailto:info@selimexports.com">info@selimexports.com</a></span>
+                <span><i class="fa-solid fa-phone ml-1.5 text-primary-500"></i> <a href="tel:201024982550+">201024982550+  </a></span>
+                <span><i class="fa-solid fa-envelope ml-1.5 text-primary-500"></i> <a href="mailto:selim4exports@gmail.com">info@selimexports.com</a></span>
             </div>
             <div class="flex items-center gap-4">
-                <span class="text-stone-400 text-[10px]" data-i18n="top_working_hours"><i class="fa-regular fa-clock ml-1"></i> السبت - الخميس: 9ص – 6م</span>
-                <span class="text-stone-400 text-[10px]" data-i18n="top_export"><i class="fa-solid fa-globe ml-1"></i> تصدير لجميع الموانئ</span>
+                <span class="text-stone-400 text-[10px]" data-i18n="top_working_hours"><i class="fa-regular fa-clock ml-1"></i> جميع ايام الاسبوع</span>
+                <span class="text-stone-400 text-[10px]" data-i18n="top_export"><i class="fa-solid fa-globe ml-1"></i>الإستعداد للتصدير في جميع انحاء العالم</span>
             </div>
         </div>
     </div>
@@ -250,12 +249,12 @@
                     <i class="fa-solid fa-box-open ml-2"></i> استعراض منتجاتنا
                 </a>
                 <a href="#contact" class="btn-outline-primary px-8 py-3.5 rounded-xl font-bold bg-white/10 backdrop-blur-sm hover:text-white transition-all" data-i18n="hero_btn2">
-                    <i class="fa-solid fa-file-invoice-dollar ml-2"></i> طلب كوت تسعير وعينات
+                    <i class="fa-solid fa-file-invoice-dollar ml-2"></i> طلب عرض تسعير وعينات
                 </a>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto pt-8 border-t border-white/10">
-                <div><div class="stat-number text-3xl md:text-4xl">20+</div><p class="text-stone-300 text-xs font-bold" data-i18n="stat_exp">سنة خبرة</p></div>
-                <div><div class="stat-number text-3xl md:text-4xl">50+</div><p class="text-stone-300 text-xs font-bold" data-i18n="stat_countries">دولة مُصدَّر إليها</p></div>
+                <div><div class="stat-number text-3xl md:text-4xl">40+</div><p class="text-stone-300 text-xs font-bold" data-i18n="stat_exp">سنة خبرة</p></div>
+                <div><div class="stat-number text-3xl md:text-4xl">🪵</div><p class="text-stone-300 text-xs font-bold" data-i18n="stat_countries">خبرة طويلة لكل ما يخص الاخشاب/p></div>
                 <div><div class="stat-number text-3xl md:text-4xl">100%</div><p class="text-stone-300 text-xs font-bold" data-i18n="stat_natural">فحم نقي طبيعي</p></div>
                 <div><div class="stat-number text-3xl md:text-4xl">4h+</div><p class="text-stone-300 text-xs font-bold" data-i18n="stat_burn">مدة احتراق</p></div>
             </div>
@@ -323,8 +322,6 @@
             <div class="w-16 h-1 bg-primary-500 mx-auto rounded-full"></div>
         </div>
         <div class="flex justify-center gap-3 mb-10 overflow-x-auto pb-3 scrollbar-none" id="filter-container">
-            <button onclick="filterCatalog('all')" id="filter-btn-all" class="filter-btn px-6 py-2 rounded-xl bg-primary-500 text-white dark:bg-gold-500 dark:text-black font-extrabold text-xs whitespace-nowrap shadow-md" data-i18n="filter_all">كل الأصناف</button>
-            <!-- سيتم إضافة أزرار التصنيف ديناميكياً بناءً على المنتجات الموجودة -->
         </div>
         <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
@@ -392,14 +389,14 @@
             </div>
             <div class="mt-8 pt-4 border-t border-stone-800 text-center text-xs text-stone-500">
                 <span class="w-1.5 h-1.5 rounded-full bg-primary-500 inline-block ml-2"></span>
-                SELIM EXPORTS &copy; 2026
+                SELIM EXPORTS &copy; <span id="current-year"></span>
                 <span class="w-1.5 h-1.5 rounded-full bg-primary-500 inline-block mr-2"></span><br />
                 <span class="text-[10px]" data-i18n="footer_rights">جميع الحقوق محفوظة</span>
             </div>
         </div>
     </footer>
 
-    <!-- ====== مودالات الإدارة ====== -->
+    <!-- ====== مودال تسجيل دخول الإدارة ====== -->
     <div id="login-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-dark-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl relative">
             <button onclick="closeAdminLoginModal()" class="absolute top-4 right-4 w-8 h-8 rounded-xl bg-stone-100 dark:bg-dark-800 text-stone-500 hover:text-red-500 flex items-center justify-center transition-all"><i class="fa-solid fa-xmark"></i></button>
@@ -416,7 +413,7 @@
         </div>
     </div>
 
-    <!-- ====== لوحة تحكم الإدارة ====== -->
+    <!-- ====== لوحة تحكم الإدارة (كاملة) ====== -->
     <section id="admin-dashboard-section" class="bg-stone-100 dark:bg-dark-950 border-t-2 border-stone-300 dark:border-dark-800 py-16 hidden">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="bg-white dark:bg-dark-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 md:p-8 shadow-2xl">
@@ -507,7 +504,6 @@
                                 <tbody id="admin-products-table-body"></tbody>
                             </table>
                         </div>
-                        <!-- تم إزالة زر إعادة الضبط الافتراضي نهائياً -->
                     </div>
                 </div>
 
@@ -640,7 +636,6 @@
             return prefix + '_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8);
         }
 
-        // ====== دالة عرض المنتجات ======
         function renderUI() {
             const productsGrid = document.getElementById('products-grid');
             const offersGrid = document.getElementById('offers-grid');
@@ -654,7 +649,8 @@
             if (aboutEl) aboutEl.innerText = websiteSettings.aboutText || 'شركة رائدة في إنتاج الفحم النباتي الفاخر.';
             if (mapEl && websiteSettings.mapUrl) mapEl.src = websiteSettings.mapUrl;
 
-            // قنوات الاتصال
+            window._websiteSettings = websiteSettings;
+
             if (contactChannelsDiv) {
                 contactChannelsDiv.innerHTML = '';
                 const channels = websiteSettings.channels || [];
@@ -685,7 +681,6 @@
                 });
             }
 
-            // سوشيال ميديا
             const renderSocial = (container) => {
                 if (!container) return;
                 container.innerHTML = '';
@@ -707,7 +702,6 @@
             renderSocial(socialLinksDiv);
             renderSocial(footerSocialDiv);
 
-            // المنتجات وجدول الإدارة
             if (productsGrid) productsGrid.innerHTML = '';
             if (offersGrid) offersGrid.innerHTML = '';
             if (adminTableBody) adminTableBody.innerHTML = '';
@@ -715,22 +709,25 @@
             const phoneChannel = (websiteSettings.channels || []).find(c => c.type === 'phone' || c.action === 'tel');
             const whatsappNumber = phoneChannel ? phoneChannel.value.replace(/[^0-9]/g, '') : '201015651543';
 
-            // تحديث أزرار الفلترة ديناميكياً
             const filterContainer = document.getElementById('filter-container');
             if (filterContainer) {
                 const tags = new Set();
                 productsList.forEach(p => { if (p.tag) tags.add(p.tag); });
-                // احتفظ بزر "الكل" وأضف الباقي
-                const allBtn = filterContainer.querySelector('#filter-btn-all');
+
                 filterContainer.innerHTML = '';
+                const allBtn = document.createElement('button');
+                allBtn.id = 'filter-btn-all';
+                allBtn.className = 'filter-btn px-6 py-2 rounded-xl bg-primary-500 text-white dark:bg-gold-500 dark:text-black font-extrabold text-xs whitespace-nowrap shadow-md';
+                allBtn.textContent = 'كل الأصناف';
+                allBtn.onclick = () => filterCatalog('all');
                 filterContainer.appendChild(allBtn);
+
                 tags.forEach(t => {
                     const btn = document.createElement('button');
-                    btn.onclick = () => filterCatalog(t);
                     btn.id = `filter-btn-${t}`;
-                    btn.className =
-                        'filter-btn px-6 py-2 rounded-xl bg-white dark:bg-dark-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-800 font-bold text-xs whitespace-nowrap shadow-sm hover:border-primary-500';
+                    btn.className = 'filter-btn px-6 py-2 rounded-xl bg-white dark:bg-dark-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-800 font-bold text-xs whitespace-nowrap shadow-sm hover:border-primary-500';
                     btn.textContent = t;
+                    btn.onclick = () => filterCatalog(t);
                     filterContainer.appendChild(btn);
                 });
             }
@@ -738,7 +735,6 @@
             productsList.forEach(product => {
                 const isShowPrice = product.showPrice === true || product.showPrice === 'true';
                 const isOffer = product.isOffer === true || product.isOffer === 'true';
-                // دعم البيانات القديمة والجديدة للسعر
                 let priceDisplay = '';
                 if (product.priceAmount && product.currency) {
                     priceDisplay = `${product.priceAmount} ${product.currency}${product.unit || ''}`;
@@ -754,8 +750,7 @@
 
                 if (productsGrid) {
                     const card = document.createElement('div');
-                    card.className =
-                        "bg-white dark:bg-dark-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-900 shadow-sm hover:border-primary-500/40 transition-all flex flex-col justify-between product-card-item hover-lift";
+                    card.className = "bg-white dark:bg-dark-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-900 shadow-sm hover:border-primary-500/40 transition-all flex flex-col justify-between product-card-item hover-lift";
                     card.setAttribute('data-tag', product.tag || 'غير مصنف');
                     card.innerHTML = `
                         <div><div class="h-44 bg-stone-100 dark:bg-stone-800 relative bg-cover bg-center" style="background-image: url('${product.image || 'https://images.unsplash.com/photo-1542332213-9b5a5a3fda35?q=80&w=600&auto=format&fit=crop'}')">
@@ -773,8 +768,7 @@
 
                 if (isOffer && offersGrid) {
                     const offerCard = document.createElement('div');
-                    offerCard.className =
-                        "bg-white dark:bg-dark-800 border border-primary-500/10 rounded-2xl p-4 flex flex-col sm:flex-row gap-4 items-center shadow-sm hover-lift";
+                    offerCard.className = "bg-white dark:bg-dark-800 border border-primary-500/10 rounded-2xl p-4 flex flex-col sm:flex-row gap-4 items-center shadow-sm hover-lift";
                     offerCard.innerHTML = `
                         <img src="${product.image || 'https://images.unsplash.com/photo-1542332213-9b5a5a3fda35?q=80&w=600&auto=format&fit=crop'}" class="w-20 h-20 rounded-xl object-cover border border-stone-200 dark:border-stone-700" alt="${product.name}">
                         <div class="space-y-1 text-center sm:text-right flex-1 w-full">
@@ -791,8 +785,7 @@
 
                 if (adminTableBody) {
                     const adminRow = document.createElement('tr');
-                    adminRow.className =
-                        "border-b border-stone-200 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-900/20";
+                    adminRow.className = "border-b border-stone-200 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-900/20";
                     adminRow.innerHTML = `
                         <td class="p-3 font-bold text-dark-950 dark:text-white">${product.name} <span class="text-[9px] text-stone-400 block font-normal">(${product.tag || 'عام'})</span></td>
                         <td class="p-3 font-mono font-bold">${priceDisplay}</td>
@@ -810,7 +803,6 @@
             renderAdminSocialLinksList();
         }
 
-        // ====== دوال التعديل ======
         function editProduct(id) {
             const product = productsList.find(p => p.id === id);
             if (!product) return;
@@ -820,12 +812,10 @@
             document.getElementById('prod-price-amount').value = product.priceAmount || '';
             document.getElementById('prod-currency').value = product.currency || '$';
             document.getElementById('prod-unit').value = product.unit || '';
-            document.getElementById('prod-show-price').value = product.showPrice === true || product.showPrice === 'true' ?
-                'true' : 'false';
+            document.getElementById('prod-show-price').value = product.showPrice === true || product.showPrice === 'true' ? 'true' : 'false';
             document.getElementById('prod-image-url').value = product.image || '';
             document.getElementById('prod-desc').value = product.desc || '';
             document.getElementById('prod-is-offer').checked = product.isOffer === true || product.isOffer === 'true';
-            // معاينة الصورة
             const previewContainer = document.getElementById('image-preview-container');
             const previewImg = document.getElementById('image-preview');
             if (product.image && previewImg) {
@@ -834,7 +824,6 @@
             } else {
                 previewContainer.classList.add('hidden');
             }
-            // تغيير النص
             const btn = document.getElementById('admin-save-product-btn');
             btn.textContent = 'تحديث المنتج';
             btn.setAttribute('data-i18n', 'admin_update');
@@ -842,7 +831,6 @@
             showToast('جاري تعديل المنتج: ' + product.name, 'info');
         }
 
-        // ====== دوال Firebase الأساسية ======
         async function saveProductToCloud() {
             const name = document.getElementById('prod-name').value.trim();
             const tag = document.getElementById('prod-tag').value.trim() || 'عام';
@@ -870,8 +858,7 @@
 
             try {
                 if (editingProductId) {
-                    await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', editingProductId),
-                    productData);
+                    await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', editingProductId), productData);
                     showToast('تم تحديث المنتج بنجاح ✅', 'success');
                     editingProductId = null;
                     const btn = document.getElementById('admin-save-product-btn');
@@ -881,7 +868,6 @@
                     await addDoc(productsCollectionRef, productData);
                     showToast('تم نشر المنتج الجديد بنجاح 🚀', 'success');
                 }
-                // إعادة ضبط النموذج
                 document.getElementById('prod-name').value = '';
                 document.getElementById('prod-tag').value = '';
                 document.getElementById('prod-price-amount').value = '';
@@ -896,30 +882,21 @@
             }
         }
 
-        // بقية الدوال (onSnapshot, auth, channels, etc) بنفس الكود السابق مع الحفاظ على التعديلات.
-        // (تم حذف resetProductsToDefault نهائياً)
-
-        // ====== ربط الدوال للنطاق العام ======
         window.verifyAdminCloudAuth = async function() {
             const email = document.getElementById('admin-email').value.trim();
             const password = document.getElementById('admin-password').value.trim();
             if (!email || !password) { showToast('يرجى إدخال البريد وكلمة المرور.', 'warning'); return; }
-            try { await signInWithEmailAndPassword(auth, email, password);
-                closeAdminLoginModal(); } catch (error) { showToast('فشلت عملية التحقق!', 'error'); }
+            try { await signInWithEmailAndPassword(auth, email, password); closeAdminLoginModal(); } catch (error) { showToast('فشلت عملية التحقق!', 'error'); }
         };
         window.logoutAdminCloud = async function() {
-            try { await signOut(auth);
-                document.getElementById('admin-dashboard-section').classList.add('hidden');
-                showToast('تم تسجيل الخروج بنجاح 🔒', 'info'); } catch (ex) { showToast('فشل تسجيل الخروج.', 'error'); }
+            try { await signOut(auth); document.getElementById('admin-dashboard-section').classList.add('hidden'); showToast('تم تسجيل الخروج بنجاح 🔒', 'info'); } catch (ex) { showToast('فشل تسجيل الخروج.', 'error'); }
         };
         window.saveProductToCloud = saveProductToCloud;
         window.editProduct = editProduct;
         window.deleteCloudProduct = function(id) {
             if (!auth.currentUser || auth.currentUser.isAnonymous) return;
             showConfirmModal('حذف صنف الفحم', 'هل أنت متأكد من إزالة هذا الصنف نهائياً؟', async () => {
-                try { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id));
-                    showToast('تم الحذف 🗑️', 'success'); } catch (ex) { showToast('خطأ بالحذف: ' + ex.message,
-                        'error'); }
+                try { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id)); showToast('تم الحذف 🗑️', 'success'); } catch (ex) { showToast('خطأ بالحذف: ' + ex.message, 'error'); }
             });
         };
         window.toggleCloudOfferStatus = async function(id) {
@@ -927,31 +904,26 @@
             const prod = productsList.find(p => p.id === id);
             if (!prod) return;
             const updated = !(prod.isOffer === true || prod.isOffer === 'true');
-            try { await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), { isOffer: updated });
-                showToast('تم تحديث حالة العرض', 'success'); } catch (ex) { showToast('خطأ: ' + ex.message, 'error'); }
+            try { await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), { isOffer: updated }); showToast('تم تحديث حالة العرض', 'success'); } catch (ex) { showToast('خطأ: ' + ex.message, 'error'); }
         };
 
         window.filterCatalog = function(tag) {
             const items = document.querySelectorAll('.product-card-item');
             document.querySelectorAll('.filter-btn').forEach(b => {
-                b.className =
-                    'filter-btn px-6 py-2 rounded-xl bg-white dark:bg-dark-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-800 font-bold text-xs whitespace-nowrap shadow-sm';
+                b.className = 'filter-btn px-6 py-2 rounded-xl bg-white dark:bg-dark-900 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-800 font-bold text-xs whitespace-nowrap shadow-sm';
             });
             const activeBtn = document.getElementById(`filter-btn-${tag}`);
-            if (activeBtn) activeBtn.className =
-                'filter-btn px-6 py-2 rounded-xl bg-primary-500 text-white dark:bg-gold-500 dark:text-black font-extrabold text-xs whitespace-nowrap shadow-md';
+            if (activeBtn) activeBtn.className = 'filter-btn px-6 py-2 rounded-xl bg-primary-500 text-white dark:bg-gold-500 dark:text-black font-extrabold text-xs whitespace-nowrap shadow-md';
             items.forEach(c => {
                 if (tag === 'all' || c.getAttribute('data-tag') === tag) c.style.display = 'flex';
                 else c.style.display = 'none';
             });
         };
 
-        // ====== بدء التشغيل ======
         onAuthStateChanged(auth, async (user) => {
             if (user && !user.isAnonymous) document.getElementById('admin-dashboard-section').classList.remove('hidden');
             else document.getElementById('admin-dashboard-section').classList.add('hidden');
             if (!user) { try { await signInAnonymously(auth); } catch (e) { console.error(e); } }
-            // مستمعات Firebase
             onSnapshot(productsCollectionRef, (snap) => {
                 productsList = [];
                 snap.forEach(d => productsList.push({ id: d.id, ...d.data() }));
@@ -960,120 +932,29 @@
             });
             onSnapshot(settingsDocRef, (snap) => {
                 if (snap.exists()) { websiteSettings = { ...websiteSettings, ...snap.data() }; }
+                window._websiteSettings = websiteSettings;
                 renderUI();
                 localStorage.setItem('selim_exports_settings_v5', JSON.stringify(websiteSettings));
             });
         });
 
-        // دوال القنوات والإعدادات (مختصرة للحفاظ على الطول، موجودة فعلياً في الكود الأصلي)
-        window.addNewChannel = function() { if (!websiteSettings.channels) websiteSettings.channels = [];
-            websiteSettings.channels.push({ id: generateLocalId('ch'), type: 'phone', icon: 'fa-solid fa-phone',
-                label: 'قناة جديدة', value: '+20', action: 'tel', color: 'primary' });
-            renderAdminChannelsList(); };
-        window.deleteChannel = function(id) { showConfirmModal('حذف قناة', 'تأكيد الحذف؟', () => { websiteSettings
-                    .channels = (websiteSettings.channels || []).filter(c => c.id !== id);
-                renderAdminChannelsList();
-                showToast('تم الحذف محلياً', 'info'); }); };
-        window.addNewSocialLink = function() { if (!websiteSettings.socialLinks) websiteSettings.socialLinks = [];
-            websiteSettings.socialLinks.push({ id: generateLocalId('sl'), icon: 'fa-brands fa-instagram',
-                url: 'https://', color: 'primary', platform: 'منصة جديدة' });
-            renderAdminSocialLinksList(); };
-        window.deleteSocialLink = function(id) { showConfirmModal('حذف منصة', 'تأكيد الحذف؟', () => { websiteSettings
-                    .socialLinks = (websiteSettings.socialLinks || []).filter(s => s.id !== id);
-                renderAdminSocialLinksList();
-                showToast('تم الحذف محلياً', 'info'); }); };
-        window.saveChannelsAndSocialToCloud = async function() {
-            if (!auth.currentUser || auth.currentUser.isAnonymous) { showToast('يجب تسجيل الدخول.', 'error'); return; }
-            try { await setDoc(settingsDocRef, { channels: websiteSettings.channels || [],
-                    socialLinks: websiteSettings.socialLinks || [] }, { merge: true });
-                showToast('تم الحفظ سحابياً 🌐', 'success'); } catch (e) { showToast('فشل الحفظ: ' + e.message, 'error'); }
-        };
-        window.saveWebsiteSettingsToCloud = async function() {
-            if (!auth.currentUser || auth.currentUser.isAnonymous) { showToast('يجب تسجيل الدخول.', 'error'); return; }
-            const mapUrl = document.getElementById('setting-map-url').value.trim();
-            const aboutText = document.getElementById('setting-about').value.trim();
-            showConfirmModal('تحديث الإعدادات', 'تأكيد الحفظ؟', async () => {
-                try { await setDoc(settingsDocRef, { mapUrl, aboutText }, { merge: true });
-                    showToast('تم التحديث 🌐', 'success'); } catch (e) { showToast('فشل: ' + e.message,
-                        'error'); }
-            });
-        };
+        window.addNewChannel = function() { if (!websiteSettings.channels) websiteSettings.channels = []; websiteSettings.channels.push({ id: generateLocalId('ch'), type: 'phone', icon: 'fa-solid fa-phone', label: 'قناة جديدة', value: '+20', action: 'tel', color: 'primary' }); renderAdminChannelsList(); };
+        window.deleteChannel = function(id) { showConfirmModal('حذف قناة', 'تأكيد الحذف؟', () => { websiteSettings.channels = (websiteSettings.channels || []).filter(c => c.id !== id); renderAdminChannelsList(); showToast('تم الحذف محلياً', 'info'); }); };
+        window.addNewSocialLink = function() { if (!websiteSettings.socialLinks) websiteSettings.socialLinks = []; websiteSettings.socialLinks.push({ id: generateLocalId('sl'), icon: 'fa-brands fa-instagram', url: 'https://', color: 'primary', platform: 'منصة جديدة' }); renderAdminSocialLinksList(); };
+        window.deleteSocialLink = function(id) { showConfirmModal('حذف منصة', 'تأكيد الحذف؟', () => { websiteSettings.socialLinks = (websiteSettings.socialLinks || []).filter(s => s.id !== id); renderAdminSocialLinksList(); showToast('تم الحذف محلياً', 'info'); }); };
+        window.saveChannelsAndSocialToCloud = async function() { if (!auth.currentUser || auth.currentUser.isAnonymous) { showToast('يجب تسجيل الدخول.', 'error'); return; } try { await setDoc(settingsDocRef, { channels: websiteSettings.channels || [], socialLinks: websiteSettings.socialLinks || [] }, { merge: true }); showToast('تم الحفظ سحابياً 🌐', 'success'); } catch (e) { showToast('فشل الحفظ: ' + e.message, 'error'); } };
+        window.saveWebsiteSettingsToCloud = async function() { if (!auth.currentUser || auth.currentUser.isAnonymous) { showToast('يجب تسجيل الدخول.', 'error'); return; } const mapUrl = document.getElementById('setting-map-url').value.trim(); const aboutText = document.getElementById('setting-about').value.trim(); showConfirmModal('تحديث الإعدادات', 'تأكيد الحفظ؟', async () => { try { await setDoc(settingsDocRef, { mapUrl, aboutText }, { merge: true }); showToast('تم التحديث 🌐', 'success'); } catch (e) { showToast('فشل: ' + e.message, 'error'); } }); };
 
-        function renderAdminChannelsList() { const c = document.getElementById('admin-channels-list'); if (!c) return;
-            c.innerHTML = '';
-            (websiteSettings.channels || []).forEach(ch => { const d = document.createElement('div');
-                d.className =
-                    'flex flex-wrap items-center gap-2 bg-white dark:bg-dark-900 p-3 rounded-xl border border-stone-200 dark:border-stone-800';
-                d.innerHTML =
-                    `
-                <i class="${ch.icon} text-lg text-${ch.color}-500 w-8 text-center"></i>
-                <input type="text" value="${ch.label}" placeholder="التسمية" data-ch-id="${ch.id}" data-field="label" class="flex-1 min-w-[120px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input">
-                <input type="text" value="${ch.value}" placeholder="القيمة" data-ch-id="${ch.id}" data-field="value" class="flex-1 min-w-[120px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input text-left font-mono">
-                <select data-ch-id="${ch.id}" data-field="action" class="bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input">
-                    <option value="tel" ${ch.action==='tel'?'selected':''}>هاتف</option>
-                    <option value="mailto" ${ch.action==='mailto'?'selected':''}>بريد</option>
-                    <option value="whatsapp" ${ch.action==='whatsapp'?'selected':''}>واتساب</option>
-                    <option value="text" ${ch.action==='text'?'selected':''}>نص</option>
-                </select>
-                <input type="text" value="${ch.icon}" placeholder="أيقونة FA" data-ch-id="${ch.id}" data-field="icon" class="w-28 bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input text-left font-mono">
-                <select data-ch-id="${ch.id}" data-field="color" class="bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input">
-                    <option value="primary" ${ch.color==='primary'?'selected':''}>برتقالي</option>
-                    <option value="gold" ${ch.color==='gold'?'selected':''}>ذهبي</option>
-                    <option value="stone" ${ch.color==='stone'?'selected':''}>رمادي</option>
-                    <option value="red" ${ch.color==='red'?'selected':''}>أحمر</option>
-                    <option value="green" ${ch.color==='green'?'selected':''}>أخضر</option>
-                    <option value="blue" ${ch.color==='blue'?'selected':''}>أزرق</option>
-                    <option value="purple" ${ch.color==='purple'?'selected':''}>بنفسجي</option>
-                </select>
-                <button onclick="deleteChannel('${ch.id}')" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center transition-colors shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>
-            `;
-                c.appendChild(d); });
-            c.querySelectorAll('.channel-input').forEach(inp => { inp.addEventListener('change', function() { const
-                        id = this.dataset.chId,
-                        f = this.dataset.field,
-                        idx = (websiteSettings.channels || []).findIndex(c => c.id === id); if (idx >= 0)
-                        websiteSettings.channels[idx][f] = this.value; }); });
-        }
+        function renderAdminChannelsList() { const c = document.getElementById('admin-channels-list'); if (!c) return; c.innerHTML = ''; (websiteSettings.channels || []).forEach(ch => { const d = document.createElement('div'); d.className = 'flex flex-wrap items-center gap-2 bg-white dark:bg-dark-900 p-3 rounded-xl border border-stone-200 dark:border-stone-800'; d.innerHTML = `<i class="${ch.icon} text-lg text-${ch.color}-500 w-8 text-center"></i><input type="text" value="${ch.label}" placeholder="التسمية" data-ch-id="${ch.id}" data-field="label" class="flex-1 min-w-[120px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input"><input type="text" value="${ch.value}" placeholder="القيمة" data-ch-id="${ch.id}" data-field="value" class="flex-1 min-w-[120px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input text-left font-mono"><select data-ch-id="${ch.id}" data-field="action" class="bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input"><option value="tel" ${ch.action==='tel'?'selected':''}>هاتف</option><option value="mailto" ${ch.action==='mailto'?'selected':''}>بريد</option><option value="whatsapp" ${ch.action==='whatsapp'?'selected':''}>واتساب</option><option value="text" ${ch.action==='text'?'selected':''}>نص</option></select><input type="text" value="${ch.icon}" placeholder="أيقونة FA" data-ch-id="${ch.id}" data-field="icon" class="w-28 bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input text-left font-mono"><select data-ch-id="${ch.id}" data-field="color" class="bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none channel-input"><option value="primary" ${ch.color==='primary'?'selected':''}>برتقالي</option><option value="gold" ${ch.color==='gold'?'selected':''}>ذهبي</option><option value="stone" ${ch.color==='stone'?'selected':''}>رمادي</option><option value="red" ${ch.color==='red'?'selected':''}>أحمر</option><option value="green" ${ch.color==='green'?'selected':''}>أخضر</option><option value="blue" ${ch.color==='blue'?'selected':''}>أزرق</option><option value="purple" ${ch.color==='purple'?'selected':''}>بنفسجي</option></select><button onclick="deleteChannel('${ch.id}')" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center transition-colors shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>`; c.appendChild(d); }); c.querySelectorAll('.channel-input').forEach(inp => { inp.addEventListener('change', function() { const id = this.dataset.chId, f = this.dataset.field, idx = (websiteSettings.channels || []).findIndex(c => c.id === id); if (idx >= 0) websiteSettings.channels[idx][f] = this.value; }); }); }
 
-        function renderAdminSocialLinksList() { const c = document.getElementById('admin-social-links-list'); if (!c)
-            return;
-            c.innerHTML = '';
-            (websiteSettings.socialLinks || []).forEach(sl => { const d = document.createElement('div');
-                d.className =
-                    'flex flex-wrap items-center gap-2 bg-white dark:bg-dark-900 p-3 rounded-xl border border-stone-200 dark:border-stone-800';
-                d.innerHTML =
-                    `
-                <i class="${sl.icon} text-lg text-${sl.color}-500 w-8 text-center"></i>
-                <input type="text" value="${sl.platform || ''}" placeholder="اسم المنصة" data-sl-id="${sl.id}" data-field="platform" class="flex-1 min-w-[100px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input">
-                <input type="text" value="${sl.url}" placeholder="الرابط" data-sl-id="${sl.id}" data-field="url" class="flex-1 min-w-[150px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input text-left font-mono">
-                <input type="text" value="${sl.icon}" placeholder="أيقونة FA" data-sl-id="${sl.id}" data-field="icon" class="w-28 bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input text-left font-mono">
-                <select data-sl-id="${sl.id}" data-field="color" class="bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input">
-                    <option value="primary" ${sl.color==='primary'?'selected':''}>برتقالي</option>
-                    <option value="blue" ${sl.color==='blue'?'selected':''}>أزرق</option>
-                    <option value="red" ${sl.color==='red'?'selected':''}>أحمر</option>
-                    <option value="green" ${sl.color==='green'?'selected':''}>أخضر</option>
-                    <option value="purple" ${sl.color==='purple'?'selected':''}>بنفسجي</option>
-                    <option value="stone" ${sl.color==='stone'?'selected':''}>رمادي</option>
-                    <option value="gold" ${sl.color==='gold'?'selected':''}>ذهبي</option>
-                </select>
-                <button onclick="deleteSocialLink('${sl.id}')" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center transition-colors shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>
-            `;
-                c.appendChild(d); });
-            c.querySelectorAll('.social-input').forEach(inp => { inp.addEventListener('change', function() { const
-                        id = this.dataset.slId,
-                        f = this.dataset.field,
-                        idx = (websiteSettings.socialLinks || []).findIndex(s => s.id === id); if (idx >=
-                        0) websiteSettings.socialLinks[idx][f] = this.value; }); });
-        }
+        function renderAdminSocialLinksList() { const c = document.getElementById('admin-social-links-list'); if (!c) return; c.innerHTML = ''; (websiteSettings.socialLinks || []).forEach(sl => { const d = document.createElement('div'); d.className = 'flex flex-wrap items-center gap-2 bg-white dark:bg-dark-900 p-3 rounded-xl border border-stone-200 dark:border-stone-800'; d.innerHTML = `<i class="${sl.icon} text-lg text-${sl.color}-500 w-8 text-center"></i><input type="text" value="${sl.platform || ''}" placeholder="اسم المنصة" data-sl-id="${sl.id}" data-field="platform" class="flex-1 min-w-[100px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input"><input type="text" value="${sl.url}" placeholder="الرابط" data-sl-id="${sl.id}" data-field="url" class="flex-1 min-w-[150px] bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input text-left font-mono"><input type="text" value="${sl.icon}" placeholder="أيقونة FA" data-sl-id="${sl.id}" data-field="icon" class="w-28 bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input text-left font-mono"><select data-sl-id="${sl.id}" data-field="color" class="bg-stone-50 dark:bg-dark-800 border border-stone-200 dark:border-stone-700 rounded-lg px-2 py-1.5 text-xs focus:outline-none social-input"><option value="primary" ${sl.color==='primary'?'selected':''}>برتقالي</option><option value="blue" ${sl.color==='blue'?'selected':''}>أزرق</option><option value="red" ${sl.color==='red'?'selected':''}>أحمر</option><option value="green" ${sl.color==='green'?'selected':''}>أخضر</option><option value="purple" ${sl.color==='purple'?'selected':''}>بنفسجي</option><option value="stone" ${sl.color==='stone'?'selected':''}>رمادي</option><option value="gold" ${sl.color==='gold'?'selected':''}>ذهبي</option></select><button onclick="deleteSocialLink('${sl.id}')" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center transition-colors shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>`; c.appendChild(d); }); c.querySelectorAll('.social-input').forEach(inp => { inp.addEventListener('change', function() { const id = this.dataset.slId, f = this.dataset.field, idx = (websiteSettings.socialLinks || []).findIndex(s => s.id === id); if (idx >= 0) websiteSettings.socialLinks[idx][f] = this.value; }); }); }
     </script>
 
     <!-- ====== UI Controllers (الترجمة والثيم) ====== -->
     <script>
-        // ====== نظام الترجمة ======
         const translations = {
             ar: {
-                // عام
-                'top_working_hours': 'السبت - الخميس: 9ص – 6م',
+                'top_working_hours': ' جميع أيام الاسبوع',
                 'top_export': 'تصدير لجميع الموانئ',
                 'header_tagline': 'فحم طبيعي فاخر',
                 'nav_home': 'الرئيسية',
@@ -1086,9 +967,9 @@
                 'hero_title_main': 'سليم للفحم النباتي الطبيعي',
                 'hero_subtitle': 'إنتاج وتجهيز فحم الفواكه النقي وفحم الموالح والجزورين بأحدث الأساليب الصديقة للبيئة، لتقديم منتج تجاري ممتاز يطابق المواصفات العالمية.',
                 'hero_btn1': 'استعراض منتجاتنا',
-                'hero_btn2': 'طلب كوت تسعير وعينات',
+                'hero_btn2': 'طلب عرض تسعير وعينات',
                 'stat_exp': 'سنة خبرة',
-                'stat_countries': 'دولة مُصدَّر إليها',
+                'stat_countries': '  خبرة طويلة لكل ما يخص الأخشاب',
                 'stat_natural': 'فحم نقي طبيعي',
                 'stat_burn': 'مدة احتراق',
                 'about_badge': 'ريادتنا في السوق',
@@ -1105,10 +986,10 @@
                 'feat4_desc': 'طاقة إنتاجية ضخمة تلبي طلبيات المصانع الكبرى والشركات طوال العام ودون انقطاع.',
                 'products_title': 'كتالوج منتجاتنا الفاخرة',
                 'filter_all': 'كل الأصناف',
-                'offers_badge': 'خصومات استثنائية على شحن الحاويات والكميات الكبرى',
+                'offers_badge': 'خصومات استثنائية على الكميات الكبرى',
                 'offers_title': 'أحدث عروض التوريد الحالية',
                 'contact_title': 'قنوات التعاقد الرسمي',
-                'contact_sub': 'يسعدنا استقبال استفساراتكم التجارية وطلبات فحص الحاويات على مدار الساعة عبر قنوات مبيعاتنا الرسمية.',
+                'contact_sub': 'يسعدنا استقبال استفساراتكم التجارية  على مدار الساعة عبر قنوات مبيعاتنا الرسمية.',
                 'social_title': 'منصاتنا الرقمية',
                 'form_title': 'تقديم طلب شحنة أو معاينة عينة',
                 'form_name': 'الاسم بالكامل / الشركة',
@@ -1126,7 +1007,6 @@
                 'footer_cert': 'شهادات الجودة',
                 'footer_follow': 'تابعنا',
                 'footer_rights': 'جميع الحقوق محفوظة',
-                // الإدارة
                 'login_title': 'بوابة التحقق السحابية المشفرة',
                 'login_sub': 'سجل دخولك كأدمن من خلال خوادم Firebase الآمنة للتحكم بالنظام.',
                 'login_email': 'البريد الإلكتروني للمسؤول',
@@ -1267,7 +1147,6 @@
             currentLang = (currentLang === 'ar') ? 'en' : 'ar';
             localStorage.setItem('lang', currentLang);
             applyTranslations(currentLang);
-            // تحديث اتجاه الصفحة
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
             showToast(currentLang === 'ar' ? 'تم التبديل إلى اللغة العربية' : 'Switched to English', 'info');
@@ -1278,24 +1157,23 @@
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
-                    // إذا كان العنصر يحتوي على أطفال (مثل الأيقونات) احتفظ بها
                     const icon = el.querySelector('i');
                     if (icon) {
-                        const iconHTML = icon.outerHTML;
-                        el.innerHTML = iconHTML + ' ' + translations[lang][key];
+                        const iconClone = icon.cloneNode(true);
+                        el.innerHTML = '';
+                        el.appendChild(iconClone);
+                        el.appendChild(document.createTextNode(' ' + translations[lang][key]));
                     } else {
                         el.textContent = translations[lang][key];
                     }
                 }
             });
-            // تحديث الأزرار الديناميكية (مثل حفظ المنتج)
-            const saveBtn = document.getElementById('admin-save-product-btn');
-            if (saveBtn && saveBtn.textContent.includes('نشر') || saveBtn.textContent.includes('Publish')) {
-                // سيتم تحديثها عبر الـ i18n المباشر
+            const allFilterBtn = document.getElementById('filter-btn-all');
+            if (allFilterBtn) {
+                allFilterBtn.textContent = translations[lang]?.['filter_all'] || 'كل الأصناف';
             }
         }
 
-        // ====== الثيم ======
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark');
             document.getElementById('theme-icon').className = 'fa-solid fa-sun';
@@ -1325,13 +1203,8 @@
             }
         }
 
-        // ====== باقي دوال الواجهة ======
-        function openAdminLoginModal() { document.getElementById('login-modal').classList.remove('hidden');
-            document.getElementById('admin-email').focus(); }
-
-        function closeAdminLoginModal() { document.getElementById('login-modal').classList.add('hidden');
-            document.getElementById('admin-email').value = '';
-            document.getElementById('admin-password').value = ''; }
+        function openAdminLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); document.getElementById('admin-email').focus(); }
+        function closeAdminLoginModal() { document.getElementById('login-modal').classList.add('hidden'); document.getElementById('admin-email').value = ''; document.getElementById('admin-password').value = ''; }
 
         function switchAdminTab(tab) {
             ['products', 'settings', 'channels'].forEach(t => {
@@ -1379,8 +1252,7 @@
                 const ph = window._websiteSettings.channels.find(c => c.type === 'phone' || c.action === 'tel');
                 if (ph) num = ph.value.replace(/[^0-9]/g, '');
             }
-            const txt =
-                `مرحباً سليم للفحم النباتي (طلب فحص):\nالاسم: ${n}\nالجوال: ${p}\nالسوق: ${m}\nالطلب: ${msg}`;
+            const txt = `مرحباً سليم للفحم النباتي (طلب فحص):\nالاسم: ${n}\nالجوال: ${p}\nالسوق: ${m}\nالطلب: ${msg}`;
             window.open(`https://wa.me/${num}?text=${encodeURIComponent(txt)}`, '_blank');
             showToast('تم توجيه الطلب إلى الواتساب!', 'success');
         }
@@ -1391,42 +1263,31 @@
             const t = document.createElement('div');
             let bg = 'bg-stone-900 text-white dark:bg-white dark:text-stone-900';
             let icon = 'fa-solid fa-circle-info text-gold-500';
-            if (type === 'success') { bg = 'bg-emerald-600 text-white';
-                icon = 'fa-solid fa-circle-check text-white'; } else if (type === 'error') { bg =
-                'bg-red-600 text-white';
-                icon = 'fa-solid fa-circle-xmark text-white'; } else if (type === 'warning') { bg =
-                'bg-amber-500 text-black';
-                icon = 'fa-solid fa-triangle-exclamation text-black'; }
-            t.className =
-                `${bg} p-4 rounded-2xl flex items-center gap-3 shadow-xl transform translate-y-2 opacity-0 transition-all duration-300 border border-white/10 text-xs font-bold`;
+            if (type === 'success') { bg = 'bg-emerald-600 text-white'; icon = 'fa-solid fa-circle-check text-white'; }
+            else if (type === 'error') { bg = 'bg-red-600 text-white'; icon = 'fa-solid fa-circle-xmark text-white'; }
+            else if (type === 'warning') { bg = 'bg-amber-500 text-black'; icon = 'fa-solid fa-triangle-exclamation text-black'; }
+            t.className = `${bg} p-4 rounded-2xl flex items-center gap-3 shadow-xl transform translate-y-2 opacity-0 transition-all duration-300 border border-white/10 text-xs font-bold`;
             t.innerHTML = `<i class="${icon} text-base shrink-0"></i> <span>${text}</span>`;
             container.appendChild(t);
             setTimeout(() => t.classList.remove('translate-y-2', 'opacity-0'), 10);
-            setTimeout(() => { t.classList.add('translate-y-2', 'opacity-0');
-                setTimeout(() => t.remove(), 300); }, 4000);
+            setTimeout(() => { t.classList.add('translate-y-2', 'opacity-0'); setTimeout(() => t.remove(), 300); }, 4000);
         }
 
         let confirmActionCallback = null;
-
         function showConfirmModal(title, message, onConfirm) {
             document.getElementById('confirm-title').innerText = title;
             document.getElementById('confirm-message').innerText = message;
             document.getElementById('confirm-modal').classList.remove('hidden');
             confirmActionCallback = onConfirm;
         }
-        document.getElementById('confirm-cancel-btn').addEventListener('click', () => { document.getElementById(
-                'confirm-modal').classList.add('hidden');
-            confirmActionCallback = null; });
-        document.getElementById('confirm-ok-btn').addEventListener('click', () => { document.getElementById('confirm-modal')
-                .classList.add('hidden'); if (confirmActionCallback) { confirmActionCallback();
-                confirmActionCallback = null; } });
+        document.getElementById('confirm-cancel-btn').addEventListener('click', () => { document.getElementById('confirm-modal').classList.add('hidden'); confirmActionCallback = null; });
+        document.getElementById('confirm-ok-btn').addEventListener('click', () => { document.getElementById('confirm-modal').classList.add('hidden'); if (confirmActionCallback) { confirmActionCallback(); confirmActionCallback = null; } });
 
-        // ====== التطبيق عند التحميل ======
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
             applyTranslations(currentLang);
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
-            // تعيين القيم الافتراضية في نموذج الإدارة
             document.getElementById('prod-currency').value = '$';
         });
 
